@@ -59,8 +59,8 @@ void StartBattleLandInterface()
 	BLI_SetShowParameters();
 	CreateEntity(&objLandInterface,"battle_land_interface");
 	DeleteAttribute(&objLandInterface,"");
-	LayerAddObject("execute",&objLandInterface,-1);
-	LayerAddObject("realize",&objLandInterface,-1);
+	LayerAddObject(EXECUTE, &objLandInterface,-1);
+	LayerAddObject(REALIZE, &objLandInterface,-1);
 
 	SetEventHandler(EVENT_CHANGE_OFFICERS,"BLI_UpdateOfficers",0);
 	SetEventHandler(EVENT_DIALOG_START,"BLI_DisableShow",0);

@@ -820,8 +820,8 @@ void RunHelpChooser()
 	bRunHelpChooser = true;
 	EngineLayersOffOn(false);
 	InterfaceStates.Launched=true;
-	LayerAddObject("iExecute",&objHelpChooser,10000);
-	LayerAddObject("iRealize",&objHelpChooser,10000);
+	LayerAddObject(INTERFACE_EXECUTE, &objHelpChooser,10000);
+	LayerAddObject(INTERFACE_REALIZE, &objHelpChooser,10000);
 }
 
 void ProcEndHelpChooser()
@@ -1137,11 +1137,11 @@ void InfoShowSetting()
 	}
 
 	if(bAlreadySet) {
-		LayerFreeze("irealize",true);
-		LayerFreeze("iexecute",true);
+		LayerFreeze(INTERFACE_REALIZE, true);
+		LayerFreeze(INTERFACE_EXECUTE, true);
 	} else {
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE, false);
+		LayerFreeze(INTERFACE_EXECUTE, false);
 	}
 }
 
@@ -1158,8 +1158,8 @@ void InfoShow_Control()
 			SendMessage(&GameInterface,"l",MSG_INTERFACE_LAUNCH_DASHBOARD);
 		}
 		else Event("evntLowStorageBreak");
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE, false);
+		LayerFreeze(INTERFACE_EXECUTE, false);
 	}
 }
 
@@ -1171,8 +1171,8 @@ void InfoShow_Control2()
 	{
 		PostEvent("DoInfoShower",0,"sl","OptionsBreak",false);
 		Event("evntOptionsBreak");
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE, false);
+		LayerFreeze(INTERFACE_EXECUTE, false);
 	}
 }
 

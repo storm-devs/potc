@@ -377,13 +377,13 @@ void InterfaceDoExit()
 		{
 			if( bSeaActive && !bAbordageStarted )
 			{
-				LayerFreeze("sea_realize",false);
-				LayerFreeze("sea_execute",false);
+				LayerFreeze(SEA_REALIZE, false);
+				LayerFreeze(SEA_EXECUTE, false);
 			}
 			else
 			{
-				LayerFreeze("realize",false);
-				LayerFreeze("execute",false);
+				LayerFreeze(realize, false);
+				LayerFreeze(execute, false);
 			}
 		}
 		DeleteAttribute(&GameInterface,"");
@@ -455,20 +455,11 @@ void InterfaceDoExit()
 
 void EngineLayersOffOn(bool on)
 {
-	//LayerSetRealize("realize",on);
-	//LayerSetExecute("execute",on);
 	on = !on;
 	LayerFreeze(REALIZE,on);
 	LayerFreeze(EXECUTE,on);
 	LayerFreeze(SEA_REALIZE,on);
 	LayerFreeze(SEA_EXECUTE,on);
-	//LayerFreeze("sun_trace",on);
-	//LayerFreeze("sea_reflection",on);
-	//LayerFreeze("shadow",on);
-	//LayerFreeze("ship_cannon_trace",on);
-	//LayerFreeze("hull_trace",on);
-	//LayerFreeze("mast_ship_trace",on);
-	//LayerFreeze("sails_trace",on);
 }
 
 string seadogs_saveFrom = "";

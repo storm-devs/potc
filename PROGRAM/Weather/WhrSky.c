@@ -18,7 +18,7 @@ void WhrCreateSkyEnvironment()
 	if (!isEntity(&Sky))
 	{
 		CreateEntity(&Sky,"Sky");
-		LayerAddObject("sea_reflection",&Sky,1);
+		LayerAddObject(SEA_REFLECTION, &Sky,1);
 	}
 
 	Sky.Dir = Whr_GetString(aSky,"Dir");
@@ -32,8 +32,8 @@ void WhrCreateSkyEnvironment()
 
 void MoveSkyToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject("execute",&Sky);
-	LayerDelObject("realize",&Sky);
+	LayerDelObject(EXECUTE, &Sky);
+	LayerDelObject(REALIZE, &Sky);
 	LayerDelObject(SEA_EXECUTE,&Sky);
 	LayerDelObject(SEA_REALIZE,&Sky);
 

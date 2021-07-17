@@ -125,18 +125,18 @@ bool LoadLocation(ref loc)
 	if(isNoBoarding)
 	{
 		//Sea
-		if(loc.environment.sea == "true") CreateSea("execute","realize");//CreateEntity(&locSea, "sea");
+		if(loc.environment.sea == "true") CreateSea(EXECUTE, REALIZE);//CreateEntity(&locSea, "sea");
 		//Weather
-		if(loc.environment.weather == "true") CreateWeather("execute","realize");//CreateEntity(&locWeather, "weather");
+		if(loc.environment.weather == "true") CreateWeather(EXECUTE, REALIZE);//CreateEntity(&locWeather, "weather");
 		//Ship env
 		CreateShipEnvironment();
 	}
 	if(isFort)
 	{
 		//Sea
-		if(loc.environment.sea == "true") CreateSea("execute","realize");//CreateEntity(&locSea, "sea");
+		if(loc.environment.sea == "true") CreateSea(EXECUTE, REALIZE);//CreateEntity(&locSea, "sea");
 		//Weather
-		if(loc.environment.weather == "true") CreateWeather("execute","realize");//CreateEntity(&locWeather, "weather");
+		if(loc.environment.weather == "true") CreateWeather(EXECUTE, REALIZE);//CreateEntity(&locWeather, "weather");
 	}
 
 	ReloadProgressUpdate();
@@ -660,7 +660,7 @@ bool LocLoadModel(aref loc, string sat, string addition)
 			if (!isEntity(&Island))
 			{
 				CreateEntity(&Island, "Island");
-				LayerAddObject("realize", &Island, 65529);
+				LayerAddObject(REALIZE, &Island, 65529);
 			}
 
 			SendMessage(&Island, "liss", MSG_LOCATION_ADD_MODEL, &mdl, loc.id, loc.filespath.models);

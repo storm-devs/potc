@@ -26,8 +26,8 @@
 
 #define PLAYER_GROUP	"OurGroup"
 
-string	sCurrentSeaExecute = EXECUTE;
-string	sCurrentSeaRealize = REALIZE;
+int	sCurrentSeaExecute = EXECUTE;
+int	sCurrentSeaRealize = REALIZE;
 
 int		iAITemplatesNum;
 bool	bSeaActive;
@@ -424,14 +424,14 @@ void SeaLogin(ref Login)
 
 			SendMessage(&Island, "lsss", MSG_ISLAND_LOAD_GEO, "islands", Islands[iIslandIndex].filespath.models, Islands[iIslandIndex].model);
 			LayerAddObject(SEA_REALIZE, &Island, 65529);
-			LayerAddObject("mast_island_trace", &Island, 1);
-			LayerAddObject("sun_trace", &Island, 1);
+			LayerAddObject(MAST_ISLAND_TRACE, &Island, 1);
+			LayerAddObject(SUN_TRACE, &Island, 1);
 
 			CreateEntity(&IslandReflModel, "MODELR");
 			string sReflModel = Islands[iIslandIndex].filespath.models + "\" + Islands[iIslandIndex].refl_model;
 			SendMessage(&IslandReflModel, "ls", MSG_MODEL_SET_LIGHT_PATH, GetLightingPath());
 			SendMessage(&IslandReflModel, "ls", MSG_MODEL_LOAD_GEO, sReflModel);
-			LayerAddObject("sea_reflection", &IslandReflModel, -1);
+			LayerAddObject(SEA_REFLECTION, &IslandReflModel, -1);
 			SendMessage(SeaLighter, "ssi", "AddModel", Islands[iIslandIndex].refl_model, &IslandReflModel);
 			
 			bIslandLoaded = true;

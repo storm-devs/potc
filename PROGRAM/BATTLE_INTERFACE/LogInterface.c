@@ -23,8 +23,8 @@ void InitLogInterface()
 	SetEventHandler(EVENT_LOCATION_LOAD,"LI_LocationLoad",0);
 	SetEventHandler("BI_FastCommand","BI_FastCommand",0);
 	SetEventHandler(BI_EVENT_SET_VISIBLE,"SetLogInterfaceVisible",0);
-	LayerAddObject("execute",&ILogAndActions,-257);
-	LayerAddObject("realize",&ILogAndActions,-257);
+	LayerAddObject(EXECUTE, &ILogAndActions,-257);
+	LayerAddObject(REALIZE, &ILogAndActions,-257);
 	LayerAddObject(SEA_EXECUTE,&ILogAndActions,-257);
 	LayerAddObject(SEA_REALIZE,&ILogAndActions,-257);
 

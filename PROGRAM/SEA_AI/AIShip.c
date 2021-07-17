@@ -23,8 +23,8 @@ void CreateRiggingEnvironment()
 	CreateEntity(&Sail, "Sail");
 	LayerAddObject(sCurrentSeaExecute, &Sail, iShipPriority + 1);
 	LayerAddObject(sCurrentSeaRealize, &Sail, iShipPriority + 1);
-	LayerAddObject("sails_trace", &Sail, 10);
-	LayerAddObject("sea_reflection", &Sail, 3);
+	LayerAddObject(SAILS_TRACE, &Sail, 10);
+	LayerAddObject(SEA_REFLECTION, &Sail, 3);
 	Sail.MinSpeed = 0.05;
 
 	CreateEntity(&Rope, "Rope");
@@ -34,7 +34,7 @@ void CreateRiggingEnvironment()
 	CreateEntity(&Flag, "Flag");
 	LayerAddObject(sCurrentSeaExecute, &Flag, iShipPriority + 3);
 	LayerAddObject(sCurrentSeaRealize, &Flag, iShipPriority + 3);
-	LayerAddObject("sea_reflection", &Flag, 3);
+	LayerAddObject(SEA_REFLECTION, &Flag, 3);
 
 	CreateEntity(&Vant, "Vant");
 	LayerAddObject(sCurrentSeaExecute, &Vant, iShipPriority + 4);
