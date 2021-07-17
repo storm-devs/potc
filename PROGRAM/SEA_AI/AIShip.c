@@ -487,8 +487,8 @@ void Ship_BranderDetonate()
 	aref	arShipObjects[64];
 	int		iNumShips = 1;
 
-	if (!FindClass(&arShipObjects[0], "ship")) { return; }// can't be
-	while (FindClassNext(&arShipObjects[iNumShips])) { iNumShips++; }
+	if (!FindEntity(&arShipObjects[0], "ship")) { return; }// can't be
+	while (FindEntityNext(&arShipObjects[iNumShips])) { iNumShips++; }
 	
 	// enumerate ship and do damage
 	for (int i=0; i<iNumShips; i++)

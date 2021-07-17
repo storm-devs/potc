@@ -58,6 +58,8 @@ native int RDTSC_E(int iRDTSC);
 #event_handler("Cheat","ProcessCheat");
 #event_handler("SeaDogs_ClearSaveData", "ClearLocationsSaveData");
 
+object Render;
+
 void ProcessCheat()
 {
 	string sCheatName;

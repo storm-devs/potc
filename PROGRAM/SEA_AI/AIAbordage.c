@@ -65,10 +65,10 @@ void Return2SeaAfterAbordage()
 {
 	// load all models back to sea
 	aref arModel;
-	if (FindClass(&arModel, "modelr")) 
+	if (FindEntity(&arModel, "modelr"))
 	{
 		SendMessage(arModel, "l", MSG_MODEL_RESTORE);
-		while (FindClassNext(&arModel)) 
+		while (FindEntityNext(&arModel))
 		{ 
 			//Trace("XYZ");
 			SendMessage(arModel, "l", MSG_MODEL_RESTORE); 
@@ -109,10 +109,10 @@ void Abordage_ReloadEndFade()
 
 	// unload all models
 	aref arModel;
-	if (FindClass(&arModel, "modelr")) 
+	if (FindEntity(&arModel, "modelr"))
 	{
 		SendMessage(arModel, "l", MSG_MODEL_RELEASE);
-		while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
+		while (FindEntityNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
 	}
 
 	if (bAbordagePlaceShipNear)
