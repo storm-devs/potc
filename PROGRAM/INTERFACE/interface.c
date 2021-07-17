@@ -276,12 +276,10 @@ void LaunchMainMenu()
 	{
 		DeleteEntitiesByType("scrshoter");
 		object scrshoter;
-		LayerCreate("realize",1);
-		LayerSetRealize("realize",1);
 		CreateEntity(&scrshoter,"scrshoter");
 		scrshoter.SavePath = "SAVE";
-		LayerAddObject(SEA_REALIZE,&scrshoter,-1);
-		LayerAddObject("realize",&scrshoter,-1);
+		LayerAddObject(SEA_REALIZE, &scrshoter,-1);
+		LayerAddObject(REALIZE, &scrshoter,-1);
 		if(!IsEntity(scrshoter)) PostEvent("makescrshot",1);
 		else PostEvent("makescrshot",1);
 	}
@@ -744,8 +742,8 @@ void _Procedure_EndVideoPlay()
 	DelEventHandler("ievntEndVideo","_Procedure_EndVideoPlay");
 	if(aviVideoObj.layer == "land")
 	{
-		LayerFreeze("realize",false);
-		LayerFreeze("execute",false);
+		LayerFreeze(REALIZE, false);
+		LayerFreeze(EXECUTE, false);
 	}
 	if(aviVideoObj.layer == "sea")
 	{
@@ -1069,9 +1067,6 @@ void procInfoShow()
 			}
 
 			CreateEntity(&objInfoList[nInfoIdx],"InfoHandler");
-
-			LayerCreate("inf_realize", 1);
-			LayerSetRealize("inf_realize", 1);
 		}
 	}
 	else
@@ -1108,10 +1103,10 @@ void InfoShowSetting()
 		}
 
 		if( bMakeSet ) {
-			LayerAddObject("inf_realize",&objInfoList[i],-1);
+			LayerAddObject(INFO_REALIZE, &objInfoList[i],-1);
 			bAlreadySet = true;
 		} else {
-			LayerDelObject("inf_realize",&objInfoList[i]);
+			LayerDelObject(INFO_REALIZE, &objInfoList[i]);
 		}
 
 		if(i==2) {

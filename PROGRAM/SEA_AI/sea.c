@@ -26,8 +26,8 @@
 
 #define PLAYER_GROUP	"OurGroup"
 
-string	sCurrentSeaExecute = "execute"; 
-string	sCurrentSeaRealize = "realize";
+string	sCurrentSeaExecute = EXECUTE;
+string	sCurrentSeaRealize = REALIZE;
 
 int		iAITemplatesNum;
 bool	bSeaActive;
@@ -113,8 +113,8 @@ void DeleteSeaEnvironment()
 	LayerFreeze(SEA_EXECUTE, true);
 	LayerFreeze(SEA_REALIZE, true);
 
-	LayerFreeze("realize", false);
-	LayerFreeze("execute", false);
+	LayerFreeze(REALIZE, false);
+	LayerFreeze(EXECUTE, false);
 
 	DeleteClass(&AISea);
 
@@ -151,18 +151,13 @@ void CreateSeaEnvironment()
 
 	Ship_Walk_Init();
 
-	LayerFreeze("realize", true);
-	LayerFreeze("execute", true);
-	LayerCreate("sea_reflection", 1);
-	LayerFreeze("sea_reflection", false);
+	LayerFreeze(REALIZE, true);
+	LayerFreeze(EXECUTE, true);
+	LayerFreeze(SEA_REFLECTION, false);
 
 	InterfaceStates.Buttons.Resume.enable = true;
 	
 	bSeaActive = true;
-	LayerCreate(SEA_REALIZE, 1);
-	LayerSetRealize(SEA_REALIZE, 1);
-	LayerCreate(SEA_EXECUTE, 1);
-	LayerSetExecute(SEA_EXECUTE, 1);
 
 	LayerFreeze(SEA_EXECUTE, false);
 	LayerFreeze(SEA_REALIZE, false);
@@ -237,8 +232,8 @@ void Sea_LandLoad()
 	if (bSeaActive == false) return;
 	if (bCanEnterToLand == true)
 	{
-		LayerFreeze("realize", false);
-		LayerFreeze("execute", false);
+		LayerFreeze(REALIZE, false);
+		LayerFreeze(EXECUTE, false);
 		Reload(arIslandReload, sIslandLocator, sIslandID);
 	}
 }

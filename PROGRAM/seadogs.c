@@ -1,3 +1,5 @@
+#include "storm-engine\layers.h"
+
 #include "events.h"
 #include "globals.c"
 #include "animals.c"
@@ -46,8 +48,6 @@ native float Degree2Radian(float fDegree);
 native float Clampf(float fValue);
 native int RDTSC_B();
 native int RDTSC_E(int iRDTSC);
-#libriary "script_libriary_test"
-
 
 #event_handler(NEW_GAME_EVENT,"NewGame");
 #event_handler(GAME_OVER_EVENT,"GameOverE");
@@ -164,12 +164,6 @@ void Main()
 {
 //	LocationTestProcess();
 //	return;
-
-	LayerCreate("realize", 1);
-	LayerCreate("sea_realize", 1);
-	LayerCreate("iRealize", 1);
-	LayerCreate("fader_realize", 1);
-	LayerCreate("inf_realize", 1);
 
 	ReloadProgressStart();
 	ControlsInit(GetTargetPlatform(),true);
@@ -462,10 +456,10 @@ void EngineLayersOffOn(bool on)
 	//LayerSetRealize("realize",on);
 	//LayerSetExecute("execute",on);
 	on = !on;
-	LayerFreeze("realize",on);
-	LayerFreeze("execute",on);
-	LayerFreeze("sea_realize",on);
-	LayerFreeze("sea_execute",on);
+	LayerFreeze(REALIZE,on);
+	LayerFreeze(EXECUTE,on);
+	LayerFreeze(SEA_REALIZE,on);
+	LayerFreeze(SEA_EXECUTE,on);
 	//LayerFreeze("sun_trace",on);
 	//LayerFreeze("sea_reflection",on);
 	//LayerFreeze("shadow",on);
@@ -663,12 +657,6 @@ void NewGame()
 */
 void InitGame()
 {
-	LayerCreate("realize", 1);
-	LayerCreate("sea_realize", 1);
-	LayerCreate("iRealize", 1);
-	LayerCreate("fader_realize", 1);
-	LayerCreate("inf_realize", 1);
-	
 	if(LoadSegment("store\initStore.c"))
 	{
 		InitStores();

@@ -107,9 +107,7 @@ void StartDialogMain()
 	object charRef = GetCharacterModel(Characters[makeint(CharacterRef.index)]);
 	SendMessage(&Dialog, "lii", 1, &Characters[makeint(CharacterRef.index)], &charRef);
 
-	LayerCreate("realize",1);
-	LayerSetRealize("realize",1);
-	LayerAddObject("realize",Dialog,-256);
+	LayerAddObject(REALIZE, Dialog,-256);
 	Set_inDialog_Attributes();
 	ProcessDialogEvent();
 
@@ -166,11 +164,8 @@ void SelfDialog(ref Character)
 	object persRef = GetCharacterModel(Characters[GetMainCharacterIndex()]);
 	SendMessage(&Dialog, "lii", 0, Character, &persRef);
 	SendMessage(&Dialog, "lii", 1, Character, &persRef);
-	
 
-	LayerCreate("realize",1);
-	LayerSetRealize("realize",1);
-	LayerAddObject("realize",Dialog,-256);
+	LayerAddObject(REALIZE, Dialog,-256);
 	Set_inDialog_Attributes();
 	ProcessDialogEvent();
 
