@@ -48,6 +48,8 @@ native float Degree2Radian(float fDegree);
 native float Clampf(float fValue);
 native int RDTSC_B();
 native int RDTSC_E(int iRDTSC);
+#libriary "script_libriary_test"
+
 
 #event_handler(NEW_GAME_EVENT,"NewGame");
 #event_handler(GAME_OVER_EVENT,"GameOverE");
