@@ -68,8 +68,8 @@ void DeleteSeaEnvironment()
 
 	StopMusic();
 	bSeaActive = false;
-	sCurrentSeaExecute = "execute";
-	sCurrentSeaRealize = "realize";
+	sCurrentSeaExecute = EXECUTE;
+	sCurrentSeaRealize = REALIZE;
 
 	rPlayer.Ship.Stopped = true;
 	DeleteBattleInterface();
