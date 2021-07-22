@@ -21,7 +21,10 @@ void WhrCreateSkyEnvironment()
 		LayerAddObject(SEA_REFLECTION, &Sky,1);
 	}
 
+	DeleteAttribute(&Sky,"Dir");
+	Sky.Dir.d1 = aCurWeather.Sky.Dir;
 	Sky.Dir = Whr_GetString(aSky,"Dir");
+
 	Sky.Color = Whr_GetColor(aSky,"Color");
 	Sky.RotateSpeed = Whr_GetFloat(aSky,"Rotate");
 	Sky.Angle = Whr_GetFloat(aSky,"Angle");
