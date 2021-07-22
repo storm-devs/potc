@@ -3,7 +3,7 @@ object	Sea;
 void SeaAI_GetLayers()
 {
 	aref oTmp = GetEventData();
-	SendMessage(oTmp, "lss", AI_MESSAGE_SET_LAYERS, sCurrentSeaExecute, sCurrentSeaRealize);
+	SendMessage(oTmp, "lll", AI_MESSAGE_SET_LAYERS, sCurrentSeaExecute, sCurrentSeaRealize);
 }
 
 void DeleteSea()
