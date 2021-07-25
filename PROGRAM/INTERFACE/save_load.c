@@ -5,6 +5,7 @@ int nCurScroll;
 bool bThisSave;
 
 aref scrshot;
+object emptyscrshot;
 
 bool bSaveConfirm;
 bool bLoadConfirm;
@@ -641,21 +642,8 @@ void ReleaseInterfaceTexture()
 
 void FindScrshotClass()
 {
-	string layerName;
-	if(bSeaActive && !bAbordageStarted) layerName = SEA_REALIZE;
-	else layerName = "realize";
-	aref refObj;
-	if( GetEntity(layerName,&refObj) )
-	{
-		while(true)
-		{
-			if(GetEntityName(&refObj)=="scrshoter")
-			{
-				scrshot = refObj;
-				break;
-			}
-			if( !GetEntityNext(&refObj) ) break;
-		}
+	if( !GetEntity(&scrshot, "scrshoter") ) {
+		makearef(scrshot, emptyscrshot);
 	}
 }
 
