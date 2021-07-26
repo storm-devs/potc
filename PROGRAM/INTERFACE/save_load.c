@@ -589,17 +589,17 @@ bool GetNextSubStr(string inStr, ref outStr, ref lastStr)
 	return true;
 }
 
-int sl_tmp_var;
-ref NewInterfaceTexture()
+ptr NewInterfaceTexture()
 {
 	string str = GetEventData();
 	int nStartPic = GetEventData();
 	string strSaveData;
+	ptr texture;
 
 	if(GetTargetPlatform()=="pc") {
-		sl_tmp_var = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ, GameInterface.SavePath, str, &strSaveData);
+		texture = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ, GameInterface.SavePath, str, &strSaveData);
 	} else {
-		sl_tmp_var = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ,"", str, &strSaveData);
+		texture = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ,"", str, &strSaveData);
 	}
 
 	SetDataIntoList(str,strSaveData);
@@ -610,7 +610,7 @@ ref NewInterfaceTexture()
 		string lngID = "";
 		ParseSaveData(strSaveData, &tmpStr,&tmpStr,&tmpStr,&tmpStr, &tmpStr, &tmpStr, &lngID);
 		if( lngID!="" && lngID!=LanguageGetLanguage() ) {
-			sl_tmp_var = -1;
+			texture = -1;
 
 			aref arList; makearef(arList,GameInterface.saveslist);
 			int qn = sti(arList.ListSize)-1;
@@ -631,13 +631,13 @@ ref NewInterfaceTexture()
 		}
 	}
 
-	return &sl_tmp_var;
+	return texture;
 }
 
 void ReleaseInterfaceTexture()
 {
 	string str = GetEventData();
-	sl_tmp_var = SendMessage(&scrshot,"ls",MSG_SCRSHOT_RELEASE,str);
+	SendMessage(&scrshot,"ls",MSG_SCRSHOT_RELEASE,str);
 }
 
 void FindScrshotClass()
