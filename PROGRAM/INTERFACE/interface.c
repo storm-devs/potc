@@ -691,13 +691,7 @@ void StartVideo(string vidName)
 	bGamePadChangeEnable = true;
 	bPlayVideoNow = true;
 
-	if( vidName=="Artefact" ||
-		vidName=="BlackPearl" ||
-		vidName=="Ending" ||
-		vidName=="Invasion" ||
-		vidName=="Temple"
-		) {bBreakVideoDisable = true;}
-	else {bBreakVideoDisable = false;}
+	bBreakVideoDisable = false;
 
 	SetEventHandler("Control Activation","IVideoBreak",0);
 	if(!IsEntity(aviVideoObj))
