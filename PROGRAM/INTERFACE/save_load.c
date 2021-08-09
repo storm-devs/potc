@@ -589,12 +589,12 @@ bool GetNextSubStr(string inStr, ref outStr, ref lastStr)
 	return true;
 }
 
-ptr NewInterfaceTexture()
+int NewInterfaceTexture()
 {
 	string str = GetEventData();
 	int nStartPic = GetEventData();
 	string strSaveData;
-	ptr texture;
+	int texture;
 
 	if(GetTargetPlatform()=="pc") {
 		texture = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ, GameInterface.SavePath, str, &strSaveData);
