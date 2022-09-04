@@ -1,6 +1,6 @@
 #include "storm-engine\layers.h"
 
-#include "events.h"
+#include "storm-engine\events.h"
 #include "globals.c"
 #include "animals.c"
 #include "sea_ai\sea.c"
@@ -49,7 +49,6 @@ native float Clampf(float fValue);
 native int RDTSC_B();
 native int RDTSC_E(int iRDTSC);
 #libriary "script_libriary_test"
-
 
 #event_handler(NEW_GAME_EVENT,"NewGame");
 #event_handler(GAME_OVER_EVENT,"GameOverE");

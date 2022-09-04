@@ -1,0 +1,22 @@
+string DLG_TEXT[19] = {
+"So, did you find out anything? How are our children?!",
+"I'll try to help you. Now please, move along and clear the way.",
+"What are you looking at? Did you come to laugh along with the rest of them?",
+"Calm yourself. What's the problem?",
+"I'm sorry. I can't help you.",
+"Did you find out something?",
+"I've returned your children. They are being transferred to shore right now.",
+"Oh, thank you, thank you, you're very kind.",
+"Goodbye.",
+"Oh, here's another one! He thinks it's fine to laugh and jeer at us!",
+"I don't understand what's going on here, maybe you can tell me?",
+"Our children were kidnapped last night and our Governor didn't even lift a finger!",
+"Wait, what do you mean they were kidnapped? Who did that?",
+"I don't know! When I fell asleep my baby was in the cradle. I woke up and looked in the cradle but my baby wasn't there!",
+"That's terrible! What does the Governor say about it?",
+"He won't come out and show his face! He's afraid! A coward!",
+"Please, try and calm yourself. I'll try and talk with the Governor.",
+"Bless you, bless you!",
+"Wait for me to return.",
+
+};

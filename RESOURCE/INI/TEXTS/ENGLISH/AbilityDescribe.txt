@@ -1,0 +1,238 @@
+newline {
+
+}
+
+BasicDefense	{Basic Defense}
+perkBasicDefense
+{
+Player's blocks will be 25% harder to pierce, and all damage to the player is decreased by 10%.
+}
+
+AdvancedDefense	{Advanced Defense}
+perkAdvancedDefense
+{
+Player's blocks will be 50% harder to pierce, and all damage to the player is decreased by 20%.
+}
+
+SwordplayProfessional	{Professional Fencer}
+perkSwordplayProfessional
+{
+Player's attacks are harder to block, he gets a 25% chance of scoring critical hit, and all damage to the player is decreased by 10%.
+}
+
+Rush	{Rush}
+perkRush
+{
+Player's attacks cause more damage to the enemies, but he is unable to block. The effect lasts for 30 seconds.
+}
+
+CriticalHit	{Critical Hit}
+perkCriticalHit
+{
+Player gets a 5% chance of scoring a critical hit in melee combat.
+}
+
+Gunman	{Gunman}
+perkGunman
+{
+Player will handle a pistol better - reloading is 10% faster and aiming skill is increased by 10%. Player can use double-shot pistol.
+}
+
+GunProfessional	{Professional Gunman}
+perkGunProfessional
+{
+Player will become a pistol professional - reloading is 50% faster and aiming skill is increased by 25%. Player can use quad-shot pistol.
+}
+
+FastReload	{Fast Reload}
+perkFastReload
+{
+Ship cannons will reload 20% faster.
+}
+
+ImmediateReload	{Pre-reloading}
+perkImmediateReload
+{
+Ship cannons can reload 50% faster, but the ability can be used only once every five minutes.
+}
+
+HullDamageUp	{Increased Ship Damage}
+perkHullDamageUp
+{
+Damage to the enemy's ship is increased by 15%.
+}
+
+SailsDamageUp	{Increased Sail Damage}
+perkSailsDamageUp
+{
+Damage to the enemy's sails is increased by 15%.
+}
+
+CrewDamageUp	{Increased Crew Damage}
+perkCrewDamageUp
+{
+Damage to the enemy's crew is increased by 15%.
+}
+
+CriticalShoot	{Critical Shot}
+perkCriticalShoot
+{
+Player gains a 5% chance that a volley will inflict critical damage to an enemy ship.
+}
+
+LongRangeShoot	{Increased Volley Range}
+perkLongRangeShoot
+{
+Ship cannons' range is increased by 15%.
+}
+
+CannonProfessional	{Professional Cannoneer}
+perkCannonProfessional
+{
+Cannon fire damage to enemy ship is increased by 30%. Critical hit probability increased to 15%.
+}
+
+LongRangeGrappling	{Long Range Boarding}
+perkLongRangeGrappling
+{
+The range at which boarding can be initiated is increased by 15%.
+}
+
+MusketsShoot	{Musket Volley}
+perkMusketsShoot
+{
+Right before boarding an enemy ship, the player's crew will fire muskets. This salvo kills 25% of the enemy's crew minus any defense bonuses.
+}
+
+GrapplingProfessional	{Master Of Boarding}
+perkGrapplingProfessional
+{
+The range at which boarding can be initiated is increased by 25%. Speed and angle of closing no longer matters.
+}
+
+InstantBoarding	{Instant Boarding}
+perkInstantBoarding
+{
+Once per battle, player can instantly board a chosen nearby ship. Enemy ships of high classes cannot be boarded with this ability.
+}
+
+BasicBattleState	{Basic Ship Defense}
+perkBasicBattleState
+{
+Player's ship takes 15% less damage from enemy fire.
+}
+
+AdvancedBattleState	{Advanced Ship Defense}
+perkAdvancedBattleState
+{
+Player's ship takes 25% less damage from enemy fire.
+}
+
+ShipDefenseProfessional	{Professional Ship Defense}
+perkShipDefenseProfessional
+{
+Player's ship takes 40% less damage from enemy fire and cannot be critically hit.
+}
+
+
+
+
+
+
+
+LightRepair	{Light Repairs}
+perkLightRepair
+{
+Player's crew slowly repairs his ship up to 10% of Max HP. Repair doesn't require any resources.
+}
+
+InstantRepair	{Quick Repairs}
+perkInstantRepair
+{
+Using this ability, player can instantly repair his ship in battle. It requires resources - planks and sail-cloth. This ability doesn't repair fallen masts or crew. Maximum repair - up to 90%.
+}
+
+ShipSpeedUp	{Speed Increase}
+perkShipSpeedUp
+{
+Player's ship speed is increased by 15%.
+}
+
+ShipTurnRateUp	{Maneuverability}
+perkShipTurnRateUp
+{
+Player's ship maneuverability is increased by 15%.
+}
+
+StormProfessional	{Storm Helmsman}
+perkStormProfessional
+{
+The damage that player's ship takes from storms and tornadoes is decreased by 40%.
+}
+
+Turn180	{Quick Turn-Around}
+perkTurn180
+{
+Player's ship can execute a quick 180-degree turn maneuver once every 3 minutes.
+}
+
+SandbankManeuver	{Sense Fairway}
+perkSandbankManeuver
+{
+Player's ship will be protected from the perils of traversing reefs and shoals for 60 seconds, providing the player an opportunity to escape dangerous waters without taking heavy damage.
+}
+
+SailingProfessional	{Sea Wolf}
+perkSailingProfessional
+{
+Player's ship speed and maneuverability are increased by 20%. On the world map, the player has a 50% chance of skipping random encounters.
+}
+
+
+
+
+
+
+
+
+IronWill	{Iron Will}
+perkIronWill
+{
+Player's loss of his reputation if he doesn't pay salary to his crew decreased to 50%. 
+}
+
+SharedExperience	{Shared Experience}
+perkSharedExperience
+{
+20% of the experience acquired by the player will also be added to his party members.
+}
+
+Brander	{Fire-ship}
+perkBrander
+{
+The ability to order an allied ship to explode close to the enemy, potentially causing great damage.
+}
+
+Troopers	{Landing Party}
+perkTroopers
+{
+Ability to send an allied ship to attack a fort. The fort may be weakened or captured, depending on the amount of crew on the attacking ship and its experience.
+}
+
+Trustworthy	{Trustworthy Lad}
+perkTrustworthy
+{
+Player gets the option to buy and sell contraband goods in all of the stores...Unfortunately, at the normal price.
+}
+
+BasicCommerce	{Basic Commerce}
+perkBasicCommerce
+{
+Player gets 10% discount when buying goods in stores.
+}
+
+AdvancedCommerce	{Advanced Commerce}
+perkAdvancedCommerce
+{
+Player gets 20% discount when buying goods and a 5% bonus when selling goods in stores.
+}

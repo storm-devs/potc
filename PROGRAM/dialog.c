@@ -84,7 +84,7 @@ void StartDialogMain()
 	
 	DelEventHandler("frame", "StartDialogMain");
 
-	CreateEntity(&Dialog, "dialog");
+	CreateEntity(&Dialog, "LegacyDialog");
 	Dialog.headModel = CharacterRef.headModel;
 	Dialog.gender = CharacterRef.sex;
 
@@ -157,7 +157,7 @@ void SelfDialog(ref Character)
 	//Запускаем диалог
 	Dialog.CurrentNode = CharacterRef.Dialog.CurrentNode;
 	//Trace("SelfDialog: dialog path for self character <" + Character.id + "> = " + FullDialogPath);
-	CreateEntity(&Dialog, "dialog");
+	CreateEntity(&Dialog, "LegacyDialog");
 	Dialog.headModel = Character.headModel;
 	Dialog.gender = Character.sex;
 

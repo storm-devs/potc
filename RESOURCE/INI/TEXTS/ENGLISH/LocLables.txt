@@ -1,0 +1,217 @@
+Boarding deck {Boarding deck}
+Fort inside {Fort inside}
+Conceicao Port {Conceicao Port}
+Conceicao. {Conceicao.}
+Sea. {Sea.}
+Conceicao town {Conceicao town}
+Jungle. {Jungle.}
+Port. {Port.}
+Tavern. {Tavern.}
+Store. {Store.}
+Shipyard. {Shipyard.}
+Residence. {Residence.}
+Church. {Church.}
+Loanshark's Office. {Loanshark's Office.}
+House. {House.}
+House of Amerigo Vieira {House of Amerigo Vieira}
+Conceicao townhall {Conceicao townhall}
+Exit from Conceicao {Exit from Conceicao}
+Conceicao store {Conceicao store}
+Conceicao shipyard {Conceicao shipyard}
+Conceicao Tavern {Conceicao Tavern}
+Room. {Room.}
+Room in Conceicao tavern {Room in Conceicao tavern}
+Conceicao jungle {Conceicao jungle}
+Sunny Haven. {Sunny Haven.}
+Conceicao shore {Conceicao shore}
+Hidden Cave. {Hidden Cave.}
+Exit from Smugglers Lair {Exit from Smugglers Lair}
+Leviathan Rock. {Leviathan Rock.}
+Smugglers Lair. {Smugglers Lair.}
+Chief's House. {Chief's House.}
+Rheims' House. {Rheims' House.}
+Rheims' House Window. {Rheims' House Window.}
+Smugglers Tavern {Smugglers Tavern}
+House of Leader of smugglers {House of Leader of smugglers}
+Rheims house in smugglers lair {Rheims house in smugglers lair}
+Conceicao's church {Conceicao's church}
+Douwesen port {Douwesen port}
+Douwesen. {Douwesen.}
+Douwesen town {Douwesen town}
+Douwesen townhall {Douwesen townhall}
+Exit from Douwesen {Exit from Douwesen}
+Douwesen shipyard {Douwesen shipyard}
+Douwesen store {Douwesen store}
+Douwesen tavern {Douwesen tavern}
+Room in Douwesen tavern {Room in Douwesen tavern}
+Pirate Fort {Pirate Fort}
+House of leader of Douwesen pirates {House of leader of Douwesen pirates}
+Douwesen jungles {Douwesen jungles}
+Palm Beach. {Palm Beach.}
+Douwesen shore {Douwesen shore}
+Crab Cliffs. {Crab Cliffs.}
+House in Jungle {House in Jungle}
+Rheims house on Douwesen {Rheims house on Douwesen}
+Exit. {Exit.}
+Room in Pirate tavern {Room in Pirate tavern}
+The cavern {The cavern}
+Douwesen Cavern {Douwesen Cavern}
+Douwesen Outskirts. {Douwesen Outskirts.}
+????? {?????}
+????? {?????}
+????? {?????}
+Falaise de Fleur Port {Falaise de Fleur Port}
+Falaise De Fleur. Slums. {Falaise De Fleur. Slums.}
+Beach. {Beach.}
+Head port house. {Head port house.}
+Falaise de Fleur beach {Falaise de Fleur beach}
+Falaise De Fleur {Falaise De Fleur}
+Falaise De Fleur. Center. {Falaise De Fleur. Center.}
+Falaise De Fleur's church {Falaise De Fleur's church}
+Falaise de Fleur jungle {Falaise de Fleur jungle}
+Octopus Bay. {Octopus Bay.}
+Falaise de Fleur shore {Falaise de Fleur shore}
+Falaise De Fleur townhall {Falaise De Fleur townhall}
+Falaise De Fleur Tavern {Falaise De Fleur Tavern}
+Room in Falaise de Fleur tavern {Room in Falaise de Fleur tavern}
+Falaise De Fleur shipyard {Falaise De Fleur shipyard}
+Falaise de Fleur store {Falaise de Fleur store}
+House in Falaise De Fleur {House in Falaise De Fleur}
+Falaise De Fleur. Port. {Falaise De Fleur. Port.}
+Isla Muelle port {Isla Muelle port}
+Isla Muelle. Trade Square. {Isla Muelle. Trade Square.}
+Isla Muelle {Isla Muelle}
+Isla Muelle. Center. {Isla Muelle. Center.}
+House of Mateus Santos {House of Mateus Santos}
+Isla Muelle shipyard {Isla Muelle shipyard}
+Isla Muelle store {Isla Muelle store}
+Isla Muelle tavern {Isla Muelle tavern}
+Room in Isla Muelle tavern {Room in Isla Muelle tavern}
+Isla Muelle townhall {Isla Muelle townhall}
+House in Isla Muelle {House in Isla Muelle}
+Exit from Isla Muelle {Exit from Isla Muelle}
+Sea Passage. {Sea Passage.}
+Isla Muelle passage {Isla Muelle passage}
+Oyster Beach. {Oyster Beach.}
+Isla Muelle shore {Isla Muelle shore}
+Entrace to Isla Muelle cave {Entrace to Isla Muelle cave}
+Cave. {Cave.}
+Shore. {Shore.}
+ANIMISTS Lair {ANIMISTS Lair}
+Isla Muelle church {Isla Muelle church}
+Khael Roa Shore {Khael Roa Shore}
+Maze {Maze}
+Alcove {Alcove}
+Oxbay port {Oxbay port}
+Oxbay. {Oxbay.}
+Underworld. {Underworld.}
+Exit from Oxbay {Exit from Oxbay}
+Oxbay shipyard {Oxbay shipyard}
+Oxbay store {Oxbay store}
+Oxbay tavern {Oxbay tavern}
+Room in Oxbay tavern {Room in Oxbay tavern}
+Oxbay jungles {Oxbay jungles}
+Far Beach. {Far Beach.}
+Oxbay shore {Oxbay shore}
+Oxbay cave entrance {Oxbay cave entrance}
+To Greenford. {To Greenford.}
+Greenford port {Greenford port}
+Greenford. {Greenford.}
+Canyon. Mines. {Canyon. Mines.}
+Prison. {Prison.}
+House of Yedam Kinne. {House of Yedam Kinne.}
+House of Geffrey Bampfylde {House of Geffrey Bampfylde}
+Exit from Greenford {Exit from Greenford}
+Greenford shipyard {Greenford shipyard}
+Greenford store {Greenford store}
+Greenford tavern {Greenford tavern}
+Room in Greenford tavern {Room in Greenford tavern}
+Oxbay canyon {Oxbay canyon}
+Lighthouse. {Lighthouse.}
+Mines. {Mines.}
+Mines Office. {Mines Office.}
+Oxbay lighthouse {Oxbay lighthouse}
+Canyon. Mines. {Canyon. Mines.}
+Lighthouse Inside. {Lighthouse Inside.}
+Oxbay lighthouse Inside {Oxbay lighthouse Inside}
+Oxbay_lighthouse {Oxbay_lighthouse}
+Oxbay mine {Oxbay mine}
+Greenford prison {Greenford prison}
+Yedam Kinne's house {Yedam Kinne's house}
+Greenford's church {Greenford's church}
+Quebradas Costillas port {Quebradas Costillas port}
+Quebradas Costillas {Quebradas Costillas}
+Pirate Chief's House. {Pirate Chief's House.}
+Exit from Quebradas Costillas {Exit from Quebradas Costillas}
+House of leader Quebradas Costillas pirates {House of leader Quebradas Costillas pirates}
+Quebradas Costillas store {Quebradas Costillas store}
+Quebradas Costillas tavern {Quebradas Costillas tavern}
+Room in Quebradas Costillas tavern {Room in Quebradas Costillas tavern}
+Entrance to strange house {Entrance to strange house}
+Inside strange house {Inside strange house}
+Redmond tavern {Redmond tavern}
+Redmond Townhall. Silehards's Bedroom {Redmond Townhall. Silehards's Bedroom}
+Pirate bark {Pirate bark}
+Gamboa ship {Gamboa ship}
+Street {Street}
+2nd floor {2nd floor}
+Kidnappers' Hideout, 2nd floor {Kidnappers' Hideout, 2nd floor}
+1st floor {1st floor}
+Tutorial Deck {Tutorial Deck}
+"" {""}
+Redmond {Redmond}
+Redmond. Center. {Redmond. Center.}
+Redmond port {Redmond port}
+Exit from Redmond {Exit from Redmond}
+Devil's Throat. {Devil's Throat.}
+Exit from Redmond {Exit from Redmond}
+Redmond shore {Redmond shore}
+Redmond jungles {Redmond jungles}
+Rocky Shore. {Rocky Shore.}
+Redmond tavern {Redmond tavern}
+Room in Redmond tavern {Room in Redmond tavern}
+Redmond store {Redmond store}
+Redmond shipyard {Redmond shipyard}
+Redmond townhall {Redmond townhall}
+Redmond prison {Redmond prison}
+Redmond's church {Redmond's church}
+Dungeon {Dungeon}
+Head port house {Head port house}
+Redmond. Port. {Redmond. Port.}
+House {House}
+Loanshark's Office {Loanshark's Office}
+Oxbay {Oxbay}
+Greenford {Greenford}
+Tavern {Tavern}
+Smugglers Lair {Smugglers Lair}
+Room in Smugglers Lair tavern {Room in Smugglers Lair tavern}
+Hidden Cave {Hidden Cave}
+Incas Temple {Incas Temple}
+
+
+
+Falaise De Fleur Fort {Falaise De Fleur Fort}
+Redmond Fort {Redmond Fort}
+Isla Muelle Fort {Isla Muelle Fort}
+Oxbay Fort {Oxbay Fort}
+Greenford Fort {Greenford Fort}
+Conceicao Fort {Conceicao Fort}
+Douwesen Fort {Douwesen Fort}
+Octopus Bay {Octopus Bay}
+Devil's Throat {Devil's Throat}
+Rocky Shore {Rocky Shore}
+Shore {Shore}
+Oyster Beach {Oyster Beach}
+Gray Rock Bay {Gray Rock Bay}
+Lighthouse {Lighthouse}
+Far Beach {Far Beach}
+Sunny Haven {Sunny Haven}
+Leviathan Rock {Leviathan Rock}
+Palm Beach {Palm Beach}
+Crab Cliffs {Crab Cliffs}
+
+Douwesen {Douwesen}
+Conceicao {Conceicao}
+Hidden Coast {Hidden Coast}
+Pirate Port {Pirate Port}
+Khael Roa {Khael Roa}

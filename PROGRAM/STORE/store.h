@@ -1,0 +1,26 @@
+#define STORE_QUANTITY	9
+#define FALAISE_DE_FLEUR_STORE	0
+#define REDMOND_STORE	1
+#define OXBAY_STORE	2
+#define GREENFORD_STORE	3
+#define ISLA_MUELLE_STORE	4
+#define DOUWESEN_STORE	5
+#define CONCEICAO_STORE	6
+#define SMUGGLERS_STORE	7
+#define PIRATES_STORE	8
+
+#define TRADE_TYPE_NORMAL		0
+#define TRADE_TYPE_EXPORT		1
+#define TRADE_TYPE_IMPORT		2
+#define TRADE_TYPE_CONTRABAND	3
+#define TRADE_TYPE_AMMUNITION	4
+
+#define TRADE_TYPE_NORMAL_NAME		"normal"
+#define TRADE_TYPE_EXPORT_NAME		"export"
+#define TRADE_TYPE_IMPORT_NAME		"import"
+#define TRADE_TYPE_CONTRABAND_NAME	"contraband"
+#define TRADE_TYPE_AMMUNITION_NAME	"ammunition"
+
+
+object  stores[STORE_QUANTITY];
+string  StoreName[STORE_QUANTITY];

@@ -1,0 +1,16 @@
+string DLG_TEXT[14] = {
+"Yes?",
+"...",
+"Have you brought news from the Teacher? He said he'd send his men.",
+"Yes, he sent me. But don't announce it to the whole town!",
+"Sorry. I'll keep it down. Where's your medallion?",
+"So you didn't forget about the medallion, eh? Here it is.",
+"Ah! I knew it was you! I'll go tell the others. When do we set sail?",
+"Don't you know? I'll bet you don't even know where we're going, do you?",
+"No. The Teacher hasn't told us.",
+"Good, good. It's better this way. Loose lips sink ships, as they say. And where is the Teacher himself? We can't depart without him.",
+"He went to Oxbay for a couple of days. Now that I think of it, though, he should've been back yesterday. He still hasn't returned.",
+"Strange. I suppose our voyage will be delayed, then.",
+"What? Why?",
+"You don't seriously think we'd go without him, do you? I've got to go get him, or at least find out what happened to him. Only then can we sail.",
+};

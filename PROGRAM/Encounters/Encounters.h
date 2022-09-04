@@ -1,0 +1,17 @@
+#define MAX_ENCOUNTER_TYPES			8
+
+// Encounters types
+#define ENCOUNTER_TYPE_MERCHANT0			0
+#define ENCOUNTER_TYPE_MERCHANT1			1
+#define ENCOUNTER_TYPE_MERCHANT2			2
+#define ENCOUNTER_TYPE_PATROL				3
+#define ENCOUNTER_TYPE_FLEET				4
+#define ENCOUNTER_TYPE_CORSAR				5
+#define ENCOUNTER_TYPE_PIRATE				6
+#define ENCOUNTER_TYPE_PUNITIVE_SQUADRON	7
+
+// Encounter type
+#define ENCOUNTER_TRADE				0
+#define ENCOUNTER_WAR				1
+
+object EncountersTypes[MAX_ENCOUNTER_TYPES];

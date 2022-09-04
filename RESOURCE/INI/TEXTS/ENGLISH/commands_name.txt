@@ -1,0 +1,33 @@
+
+sea_Cancel {Cancel}
+sea_Moor {Moor}
+sea_SailTo {SailTo}
+sea_Board {Board}
+sea_LandTroops {LandTroops}
+sea_Map {Map}
+sea_Attack {Attack}
+sea_Defend {Defend}
+sea_SailAway {SailAway}
+sea_HeaveToDrift {HeaveToDrift}
+sea_Reload {Transfer}
+sea_Charge {Reload}
+sea_Speed {Sails}
+sea_CCommand {GiveOrder}
+sea_Ability {UseAbility}
+sea_ImmediateDeath {Destroy!}
+
+land_FastReload {FastTravel}
+land_ItemsUse {UseItem}
+land_DialogStart {Talk}
+land_ItemsChange {Exchange}
+land_TakeItem {TakeItem}
+land_PlaceItem {PlaceItem}
+land_OutDoor {Open}
+land_UseBox {Open}
+land_ActivateRush {Rush}
+
+go_store {Store}
+go_shipyard {Shipyard}
+go_tavern {Tavern}
+go_residence {Townhall}
+go_port {Port}

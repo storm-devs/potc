@@ -1,4 +1,4 @@
-#include "interface\messages.h"
+#include "storm-engine\interface/messages.h"
 #include "interface\utilite.c"
 #include "interface\perks\perks.c"
 

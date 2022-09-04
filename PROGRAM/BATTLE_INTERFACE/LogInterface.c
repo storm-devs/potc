@@ -1,4 +1,4 @@
-#include "battle_interface\log_msg.h"
+#include "storm-engine\battle_interface/log_msg.h"
 
 #define LOG_FOR_SEA		1
 #define LOG_FOR_LAND	2

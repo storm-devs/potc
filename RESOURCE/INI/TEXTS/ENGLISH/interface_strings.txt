@@ -1,0 +1,12 @@
+Delete savefile confirm{Are you sure you want remove this game?}
+Overwrite savefile confirm{Are you sure you want overwrite this game?}
+Low storage and unable save create{Low storage and unable save create}
+Load game confirm{Are you sure you want load this game?}
+Unable to Load save game{Unable to load save game.}
+save game limit {You have reached the max number of save games allowed. You must delete a game before you can save a new game.}
+
+Salary info {Your crew demands its monthly salary. Will you pay them?}
+
+New game confirm{Are you sure you want start a new game?}
+
+Insert Disk Ok {Please insert "Pirates Of The Caribbean" disc 2 and press <Ok> to start application or <Exit> to quit.}

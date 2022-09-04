@@ -1,0 +1,16 @@
+# Executables
+*.dll
+*.exe
+
+# XBOX
+*.xbx
+*.bin
+
+# Obsolete files
+*.old
+*.atg
+*.qch
+*.sfk
+
+# Save games
+/SAVE
