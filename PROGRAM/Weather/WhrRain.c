@@ -40,13 +40,13 @@ void WhrCreateRainEnvironment()
 
 	Rain.Rainbow.Enable = Whr_GetLong(aRainbow,"Enable");
 	Rain.Rainbow.Texture = Whr_GetString(aRainbow,"Texture");
-	
+
 	Rain.isDone = "";
 
 	bWeatherIsRain = true;
 }
 
-void MoveRainToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveRainToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Rain);
 	LayerDelObject(REALIZE, &Rain);

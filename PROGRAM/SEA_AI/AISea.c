@@ -11,7 +11,7 @@ void DeleteSea()
 	DeleteClass(&Sea);
 }
 
-void CreateSea(string sExecuteLayer, string sRealizeLayer)
+void CreateSea(int sExecuteLayer, int sRealizeLayer)
 {
 	if (IsEntity(&Sea)) { Trace("ERROR: Sea Already Loaded!!!"); return; }
 
@@ -23,7 +23,7 @@ void CreateSea(string sExecuteLayer, string sRealizeLayer)
 	Sea.AbordageMode = false;
 }
 
-void MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveSeaToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Sea);
 	LayerDelObject(REALIZE, &Sea);
@@ -148,7 +148,7 @@ void SeaAI_SetCompanionEnemy(ref rCharacter)
 	Group_SetGroupCommander(sGroupName, rCharacter.id);
 
 	SendMessage(&AISea, "la", AI_MESSAGE_SET_COMPANION_ENEMY, rCharacter);
-	
+
 	Group_SetTaskAttack(sGroupName, PLAYER_GROUP);
 	Group_DeleteAtEnd(sGroupName);
 
@@ -180,7 +180,7 @@ bool SeaAI_SetOfficer2ShipAfterAbordage(ref refMyCharacter, ref refEnemyCharacte
 
 int SeaAI_GetRelation(int iCharacterIndex1, int iCharacterIndex2)
 {
-	int iRelation = RELATION_NEUTRAL; 
+	int iRelation = RELATION_NEUTRAL;
 	if (bSeaActive)
 	{
 		SendMessage(&AISea, "laae", AI_MESSAGE_GET_RELATION, &Characters[iCharacterIndex1], &Characters[iCharacterIndex2], &iRelation);

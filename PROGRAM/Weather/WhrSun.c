@@ -72,7 +72,7 @@ void WhrCreateSunGlowEnvironment()
 	SunGlow.isDone = true;
 }
 
-void MoveSunGlowToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveSunGlowToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &SunGlow);
 	LayerDelObject(REALIZE, &SunGlow);
