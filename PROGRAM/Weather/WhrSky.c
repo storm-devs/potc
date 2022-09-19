@@ -33,7 +33,7 @@ void WhrCreateSkyEnvironment()
 	Sky.isDone = "";
 }
 
-void MoveSkyToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveSkyToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Sky);
 	LayerDelObject(REALIZE, &Sky);

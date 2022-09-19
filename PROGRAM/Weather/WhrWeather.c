@@ -19,7 +19,7 @@ int		iTotalNumWeathers = 0;
 string	sLightingPath = "day";
 string	sLmLightingPath = "day";
 string	sInsideBack = "";
-string	sNewExecuteLayer, sNewRealizeLayer;
+int	sNewExecuteLayer, sNewRealizeLayer;
 string	sCurrentFog;
 float	fWeatherDelta = 0.0;
 float	fWeatherAngle, fWeatherSpeed;
@@ -43,7 +43,7 @@ extern int InitWeather();
 void SetNextWeather(string sWeatherID)
 {
 	// find weather
-	iNextWeatherNum = -1; 
+	iNextWeatherNum = -1;
 	for (int i=0; i<MAX_WEATHERS; i++)
 	{
 		if (!CheckAttribute(&Weathers[i], "id")) { continue; }
@@ -92,7 +92,7 @@ void DeleteWeatherEnvironment()
 
 aref GetCurrentWeather()
 {
-	aref arWeather; 
+	aref arWeather;
 	makearef(arWeather,Weathers[iCurWeatherNum]);
 	return arWeather;
 }
@@ -103,10 +103,10 @@ void CreateWeatherEnvironment()
 	int iNumWeatherFound = 0;
 	int iHour = MakeInt(GetHour());
 
-	bool bWhrStorm = false; 
-	bool bWhrTornado = false; 
-	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); } 
-	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); } 
+	bool bWhrStorm = false;
+	bool bWhrTornado = false;
+	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
+	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 
 	//Trace("bCurWeatherStorm = " + bCurWeatherStorm);
 	if (iNextWeatherNum != -1)
@@ -126,8 +126,8 @@ void CreateWeatherEnvironment()
 			for (int i=0;i<MAX_WEATHERS;i++)
 			{
 				if (!CheckAttribute(&Weathers[i], "hour")) { continue; }
-				if (CheckAttribute(&Weathers[i], "skip")) 
-				{ 
+				if (CheckAttribute(&Weathers[i], "skip"))
+				{
 					if (sti(Weathers[i].skip)) { continue; }
 				}
 
@@ -146,7 +146,7 @@ void CreateWeatherEnvironment()
 				}
 				if (bWhrStorm != bCanStorm) { continue; }
 				if (bWhrTornado == true && bWhrTornado != bCanTornado) { continue; }
-				
+
 				iWeatherFound[iNumWeatherFound] = i;
 				iNumWeatherFound++;
 			}
@@ -172,13 +172,13 @@ void CreateWeatherEnvironment()
 		//Trace("Whr: Storm: Weather num = " + iCurWeatherNum);
 	}
 
-	// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP 
+	// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP
 	/*if (!bSeaActive)
 	{
 		iCurWeatherHour = iHour;
 		iCurWeatherNum = 0;
 	}*/
-	// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP 
+	// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP
 
 	bWeatherIsStorm = bWhrStorm;
 	bCurWeatherStorm = bWhrStorm;
@@ -202,9 +202,9 @@ void CreateWeatherEnvironment()
 	Weather.Wind.Speed = Whr_GetFloat(aCurWeather,"Wind.Speed");
 
 	sCurrentFog = "Fog";
-	if (bSeaActive) 
-	{ 
-		if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sCurrentFog = "SpecialSeaFog"; }	
+	if (bSeaActive)
+	{
+		if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sCurrentFog = "SpecialSeaFog"; }
 	}
 
 	string sCurFog = Whr_GetCurrentFog();
@@ -228,7 +228,7 @@ void CreateWeatherEnvironment()
 	fWeatherDelta = 0.0;
 	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherSpeed = stf(Weather.Wind.Speed);
-	
+
 	WhrCreateRainEnvironment();
 	WhrCreateSunGlowEnvironment();
 	WhrCreateLightningEnvironment();
@@ -269,10 +269,10 @@ void Whr_LoadNextWeather(int nPlus)
 		iCurWeatherNum = 0;
 	}
 
-	if (CheckAttribute(&Weathers[iCurWeatherNum], "Skip")) 
-	{ 
-		if (sti(Weathers[iCurWeatherNum].skip)) 
-		{ 
+	if (CheckAttribute(&Weathers[iCurWeatherNum], "Skip"))
+	{
+		if (sti(Weathers[iCurWeatherNum].skip))
+		{
 			Whr_LoadNextWeather(nPlus);
 			return;
 		}
@@ -319,7 +319,7 @@ int Whr_OnCalcFogColor()
 	return iColor;
 }
 
-void CreateWeather(string sExecuteLayer, string sRealizeLayer)
+void CreateWeather(int sExecuteLayer, int sRealizeLayer)
 {
 	CreateWeatherEnvironment();
 	MoveWeatherToLayers(sExecuteLayer, sRealizeLayer);
@@ -330,7 +330,7 @@ void DeleteWeather()
 	DeleteWeatherEnvironment();
 }
 
-void MoveWeatherToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveWeatherToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Weather);
 	LayerDelObject(REALIZE, &Weather);
@@ -375,7 +375,7 @@ ref Whr_GetShadowDensity()
 		iShadowDensity[0] = Whr_GetColor(aCurWeather,"Shadow.Density.Head");
 		iShadowDensity[1] = Whr_GetColor(aCurWeather,"Shadow.Density.Foot");
 	}
-	
+
 	return &iShadowDensity;
 }
 

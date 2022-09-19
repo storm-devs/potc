@@ -1042,7 +1042,7 @@ ref BI_GetData()
 				break;
 			}
 			BI_intNRetValue[2] = false;
-		}	
+		}
 		break;
 
 	case BIDT_GERALD_DATA:
@@ -1382,7 +1382,7 @@ ref procGetRiggingData()
 	int retVal = 0;
 
 	string datName = GetEventData();
-	if(datName=="GetFlagTexNum")
+	if(datName == "GetFlagTexNum" || datName == "GetShipFlagTexNum" || datName == "GetTownFlagTexNum")
 	{
 		i = GetEventData();
 		n = GetEventData();

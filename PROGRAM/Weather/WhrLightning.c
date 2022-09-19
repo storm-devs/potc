@@ -8,8 +8,8 @@ float fLightningScaleX,	fLightningScaleY;
 
 void WhrDeleteLightningEnvironment()
 {
-	if (isEntity(&Lightning)) 
-	{ 
+	if (isEntity(&Lightning))
+	{
 		DeleteClass(&Lightning);
 		DeleteAttribute(&Lightning,"");
 	}
@@ -22,15 +22,15 @@ void WhrCreateLightningEnvironment()
 {
 	aref aCurWeather = GetCurrentWeather();
 	aref aLightning; 	makearef(aLightning,aCurWeather.Lightning);
-	
+
 	DeleteAttribute(&Lightning,"");
 	Lightning.Clear = "";
 	DelEventHandler(WHR_LIGHTNING_DOIT,"Lightning_DoIt");
 
 	if (sti(aLightning.Enable) != true) return;
 
-	if (!isEntity(&Lightning)) 
-	{ 
+	if (!isEntity(&Lightning))
+	{
 		CreateEntity(&Lightning,"Lightning");
 	}
 
@@ -50,7 +50,7 @@ void WhrCreateLightningEnvironment()
 	PostEvent(WHR_LIGHTNING_DOIT,1000 + rand(1000));
 }
 
-void MoveLightningToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveLightningToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Lightning);
 	LayerDelObject(REALIZE, &Lightning);
@@ -67,7 +67,7 @@ void Lightning_DoIt()
 
 	// next lightning
 	PostEvent(WHR_LIGHTNING_DOIT, 200 + rand(1200));
-	
+
 	// if interface launched, return
 	if (sti(InterfaceStates.Launched)) { return; }
 
@@ -97,7 +97,7 @@ void Lightning_DoIt()
 	float fLightningSize = 600.0;
 	float fScaleX = fLightningScaleX;
 	float fScaleY = fLightningScaleY;
-	
+
 	if (fDist < 1000.0)
 	{
 		fLightningSize = 600.0 * fDist / 1000.0;
@@ -105,7 +105,7 @@ void Lightning_DoIt()
 		y = fLightningSize - 10.0 * fDist / 1000.0;
 		//fScaleY = fScaleY * 600.0 / fLightningSize;
 	}
-	
+
 	SendMessage(&Lightning, "llsflffffffsff", MSG_WHR_LIGHTNING_ADD, iSubTexture, "lightning", fTime, iFlickerTime, fLightningSize, fScaleX, fScaleY, x, y, z, "flash_lightning", fFlashSize, fTime / 2.0);
 
 	bool bSound = false;
