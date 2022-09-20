@@ -19,7 +19,7 @@ void InitCharacterEvents()
 
 	lockedReloadLocator = "";
 	chrWaitReloadLocator = "";
-	
+
 	chrWaitReloadIsNoLink = false;
 }
 
@@ -40,7 +40,7 @@ bool DelCharacterLocatorGroup(aref chr, string group)
 
 void chrCharacterEntryToLocator()
 {
-	aref loc = GetEventData();	
+	aref loc = GetEventData();
 	aref chr = GetEventData();
 	string group = GetEventData();
 	string locator = GetEventData();
@@ -102,11 +102,11 @@ void chrCharacterEntryToLocator()
 	case "randitem":
 		RandItem_OnEnterLocator(loc, locator);
 		break;
-	case "box":	
-		Box_EnterToLocator(loc, locator);	
+	case "box":
+		Box_EnterToLocator(loc, locator);
 		break;
 	}
-	
+
 	if( CheckAttribute(chr,"Quests.LocatorCheck." + group) )
 	{
 		chr.Quests.LocatorCheck.(group) = locator;
@@ -118,7 +118,7 @@ void chrCharacterInLocator()
 {
 	return;
 
-	aref loc = GetEventData();	
+	aref loc = GetEventData();
 	aref chr = GetEventData();
 	string group = GetEventData();
 	string locator = GetEventData();
@@ -205,7 +205,7 @@ bool chrIsNowEnableReload()
 	//Skip
 	if(chrCheckReload(chrWaitLocationRef, chrWaitReloadLocator) == 0) return false;
 	//Skip if disabled in quest movie
-	if(chrIsEnableReload() != true) return false;	
+	if(chrIsEnableReload() != true) return false;
 	return true;
 }
 
@@ -216,6 +216,12 @@ bool chrIsNowEnableReload()
 #event_handler(EVENT_DIALOG_EXIT,"chrChangeReloadStateHndl");
 #event_handler("EnableReloadLocatorEvent","chrChangeReloadStateHndl");
 #event_handler("chrCheckChangeOpenStateEvent","chrCheckChangeOpenState");
+#event_handler("eGetWeaponID","funcGetWeaponID");
+
+string funcGetWeaponID()
+{
+	return "blade";
+}
 
 void chrChangeReloadStateHndl()
 {

@@ -48,7 +48,13 @@ native float Degree2Radian(float fDegree);
 native float Clampf(float fValue);
 native int RDTSC_B();
 native int RDTSC_E(int iRDTSC);
+
+native int SetTexturePath(int iLevel, string sPath);
+native int SetGlowParams(float fBlurBrushSize, int Intensivity, int BlurPasses);
+native int RPrint(int x, int y, string sPrint);
+
 #libriary "script_libriary_test"
+#libriary "dx9render_script_libriary"
 
 #event_handler(NEW_GAME_EVENT,"NewGame");
 #event_handler(GAME_OVER_EVENT,"GameOverE");
@@ -72,11 +78,11 @@ void ProcessCheat()
 	{
 		case "Immortal":
 			if(LAi_IsImmortal(GetMainCharacter()))
-			{				
+			{
 				LAi_SetImmortal(GetMainCharacter(), false);
 				Log_SetStringToLog("God mode OFF");
 			}else{
-				
+
 				LAi_SetImmortal(GetMainCharacter(), true);
 				Log_SetStringToLog("God mode ON");
 			}
@@ -98,7 +104,7 @@ void ProcessCheat()
 		break;
 		case "Skill":
 			mc.skill.freeskill = 1;
-	
+
 			mc.skill.freeskill = sti(mc.skill.freeskill) + 50;
 			Log_SetStringToLog(" + 50 SP");
 		break;
@@ -117,12 +123,12 @@ void ProcessCheat()
 			}
 			else
 			{
-				if(mc.worldmapencountersoff == "1") 
+				if(mc.worldmapencountersoff == "1")
 				{
 					mc.worldmapencountersoff = "0";
 					Log_SetStringToLog("Worldmap encounters ON");
 				}
-				else 
+				else
 				{
 					mc.worldmapencountersoff = "1";
 					Log_SetStringToLog("Worldmap encounters OFF");
@@ -174,7 +180,7 @@ void Main()
 	sTeleportLocName = "Falaise_de_fleur_port_01";
 	sTeleportLocName = "Oxbay_port";
 
-	
+
 
 	NationsInit();
 	EncountersInit();
@@ -208,7 +214,7 @@ void Main()
 
 void Main_LogoVideo()
 {
-	
+
 	int i = sti(InterfaceStates.videoIdx);
 	switch(i)
 	{
@@ -302,8 +308,8 @@ void Main_Start()
 		UnloadSegment("Characters\Characters_names.c");
 	}
 
-*/	
-    
+*/
+
 	ReloadProgressUpdate();
 	InitGame();
 	ReloadProgressUpdate();
@@ -318,7 +324,7 @@ void Main_Start()
 
 
 	InterfaceStates.Buttons.Load.enable = true;
-	
+
 	Event("DoInfoShower","sl","game prepare",false);
 
 	StartLanguageSetting(LanguageGetLanguage());
@@ -326,10 +332,10 @@ void Main_Start()
 	//LaunchLoadGame();
 
 	CharacterIsDead(GetMainCharacter());
-	
+
 	//SetMainCharacterIndex(1);
 	//LoadMainCharacterInFirstLocation("Oxbay_town", "", "");
-	
+
 	ReloadProgressEnd();
 
 }
@@ -418,9 +424,9 @@ void InterfaceDoExit()
 				UnloadSegment("Interface\BaseInterface.c");
 			}
 
-			
+
 			LaunchSelectCharacter();
-			
+
 			//SetEventHandler("frame","NewGame",1);
 			break;
 		case RC_INTERFACE_DO_LOAD_GAME:
@@ -496,7 +502,7 @@ int actLoadFlag = 0;
 void OnLoad()
 {
 	actLoadFlag = 1;
-	
+
 
 	//NationsInit();
 	ResetSound();
@@ -509,9 +515,9 @@ void OnLoad()
 		InitBaseInterfaces();
 		UnloadSegment("Interface\BaseInterface.c");
 	}
-	
+
 	ReloadProgressUpdate();
-	
+
 	DialogsInit();
 	//IslandsInit();
 	//LocationInit();
@@ -558,7 +564,7 @@ void OnLoad()
 	//NewGame();
 	DialogRun = false;
 	InterfaceStates.Launched = false;
-	
+
 	ReloadProgressUpdate();
 
 	PerkLoad();
@@ -598,7 +604,7 @@ void NewGame_continue()
 	}
 
 	InitGame();
-	
+
 	Environment.date.hour = worldMap.date.hour;
 	Environment.date.min = worldMap.date.min;
 	Environment.date.sec = worldMap.date.sec;
@@ -612,7 +618,7 @@ void NewGame_continue()
 	InterfaceStates.Buttons.Load.enable = true;
 	//PlayMusic("MW battle2.mp3");
 	sTeleportLocName = "Tutorial_deck";
-	
+
 	ReloadProgressUpdate();
 
 	LoadMainCharacterInFirstLocation(sTeleportLocName, "reload1", "Oxbay_port");
@@ -639,7 +645,7 @@ void NewGame()
 		UnloadSegment("Interface\BaseInterface.c");
 	}
 	InitGame();
-	
+
 	InterfaceStates.Buttons.Resume.enable = true;
 	InterfaceStates.Buttons.Save.enable = true;
 	InterfaceStates.Buttons.Load.enable = true;
@@ -667,7 +673,7 @@ void InitGame()
 		wdmInitWorldMap();
 		UnloadSegment("worldmap\worldmap_init.c");
 	}
-    
+
 	IslandsInit();
 	ReloadProgressUpdate();
 	//return;
@@ -700,12 +706,12 @@ void InitGame()
 
 	SetNextWeather("Blue Sky");
 	//SetNextWeather("Violet Sky");
-	
+
 
 	ResetQuestMovie();
 
 	ReloadProgressUpdate();
-	
+
 	LoadGameOptions();
 
 	ReloadProgressUpdate();
@@ -745,7 +751,7 @@ void ProcessControls()
 			case "MainMenu": ProcessMainMenuKey();	break;
 			case "MainMenuDouble": ProcessMainMenuKey(); break;
 			case "Interface": ProcessInterfaceKey();break;
-			case "Tele": 
+			case "Tele":
 				StartQuickTeleport();
 				break;
 			case "TeleBack": Teleport(-1); break;
@@ -762,7 +768,7 @@ void ProcessControls()
 	{
 		counter++;
 		if(counter > 3) counter = 0;
-		case "CameraSwitch": 
+		case "CameraSwitch":
 			switch(counter)
 			{
 			case 0: SetDayTime(DAY_TIME_NIGHT); break;
@@ -772,7 +778,7 @@ void ProcessControls()
 			}
 		break;
 	}*/
-	
+
 }
 
 void Teleport(int step)
@@ -780,7 +786,7 @@ void Teleport(int step)
 	nTeleportLocation = nTeleportLocation + step;
 	if(nTeleportLocation >=	nLocationsNum) nTeleportLocation = 1;
 	if(nTeleportLocation <=	0) nTeleportLocation = nLocationsNum - 1;
-	
+
 	sTeleportLocName = Locations[nTeleportLocation].id;
 	Trace("Teleport to '" + sTeleportLocName + "'");
 
@@ -837,9 +843,9 @@ void GameOver(string sName)
 	//PauseAllSounds();
 	ResetSound();
 	EngineLayersOffOn(false);
-	
+
 	mc = GetMainCharacter();
-	
+
 	ClearEvents();
 	ClearPostEvents();
 	DeleteEntities();
@@ -854,7 +860,7 @@ void GameOver(string sName)
 		UnloadSegment("Interface\BaseInterface.c");
 	}
 	InitSound();
-	
+
 	SetEventHandler(EVENT_END_VIDEO,"LaunchMainMenu_afterVideo",0);
 
 

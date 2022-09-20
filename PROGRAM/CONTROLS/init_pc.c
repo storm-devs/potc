@@ -20,6 +20,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "", "ChrCamTurnV", 257, 0, false );
 	SetControlForInverting("ChrCamTurnV",false);
 	CI_CreateAndSetControls( "", "ChrCamTurnH", 256, 0, false );
+	CI_CreateAndSetControls( "", "ChrCamSpecMode", CI_GetKeyCode("VK_CONTROL"), 0, false );
 	CI_CreateAndSetControls( "", "Turn V", 257, INVERSE_CONTROL, false );
 	SetControlForInverting("Turn V",true);
 	CI_CreateAndSetControls( "", "Turn H", 256, 0, false );
@@ -176,9 +177,15 @@ void ExternControlsInit(bool bFirst)
 
 // Dialog =====================================================================
 	CI_CreateAndSetControls( "DialogControls", "DlgAction", CI_GetKeyCode("VK_SPACE"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgAction1", CI_GetKeyCode("VK_LBUTTON"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgAction2", CI_GetKeyCode("VK_RETURN"), 0, false );
 	CI_CreateAndSetControls( "", "DlgCancel", CI_GetKeyCode("VK_ESCAPE"), 0, false );
 	CI_CreateAndSetControls( "DialogControls", "DlgUp", CI_GetKeyCode("VK_UP"), 0, false );
 	CI_CreateAndSetControls( "DialogControls", "DlgDown", CI_GetKeyCode("VK_DOWN"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgUp2", CI_GetKeyCode("VK_MWHEEL_UP"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgDown2", CI_GetKeyCode("VK_MWHEEL_DOWN"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgUp3", CI_GetKeyCode("KEY_W"), 0, false );
+	CI_CreateAndSetControls( "DialogControls", "DlgDown3", CI_GetKeyCode("KEY_S"), 0, false );
 	CI_CreateAndSetControls( "DialogControls", "DlgScrollUp", CI_GetKeyCode("VK_PRIOR"), 0, false );
 	CI_CreateAndSetControls( "DialogControls", "DlgScrollDown", CI_GetKeyCode("VK_NEXT"), 0, false );
 
@@ -231,6 +238,10 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_RIGHT.img = "r";
 	objControlsState.key_codes.VK_DOWN		= 40;
 	objControlsState.key_codes.VK_DOWN.img = "d";
+	objControlsState.key_codes.VK_INSERT	= 45;
+	objControlsState.key_codes.VK_INSERT.img = "r";
+	objControlsState.key_codes.VK_DELETE	= 46;
+	objControlsState.key_codes.VK_DELETE.img = "d";
 
 	objControlsState.key_codes.KEY_0 = 48;
 	objControlsState.key_codes.KEY_0.img = "0";
@@ -346,6 +357,60 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_F3.img = "v";
 	objControlsState.key_codes.VK_F4		= 115;
 	objControlsState.key_codes.VK_F4.img = "<";
+	objControlsState.key_codes.VK_F5		= 116;
+	objControlsState.key_codes.VK_F5.img = "";
+	objControlsState.key_codes.VK_F6		= 117;
+	objControlsState.key_codes.VK_F6.img = "";
+	objControlsState.key_codes.VK_F7		= 118;
+	objControlsState.key_codes.VK_F7.img = "";
+	objControlsState.key_codes.VK_F8		= 119;
+	objControlsState.key_codes.VK_F8.img = "";
+	objControlsState.key_codes.VK_F9		= 120;
+	objControlsState.key_codes.VK_F9.img = "";
+
+	objControlsState.key_codes.VK_MWHEEL_UP		= 258;
+	objControlsState.key_codes.VK_MWHEEL_UP.img = ">";
+	objControlsState.key_codes.VK_MWHEEL_DOWN	= 259;
+	objControlsState.key_codes.VK_MWHEEL_DOWN.img = ">";
+
+	objControlsState.key_codes.VK_MBUTTON	= 4;
+	objControlsState.key_codes.VK_MBUTTON.img = ">";
+	objControlsState.key_codes.VK_F10		= 121;
+	objControlsState.key_codes.VK_F10.img = "z";
+    objControlsState.key_codes.VK_F11		= 122;
+	objControlsState.key_codes.VK_F11.img = "z";
+    objControlsState.key_codes.VK_F12		= 123;
+	objControlsState.key_codes.VK_F12.img = "z";
+	objControlsState.key_codes.VK_PAUSE	= 19;
+	objControlsState.key_codes.VK_PAUSE.img = "z";
+
+	objControlsState.key_codes.VK_L_BREAKE		= 219;   //[ {
+	objControlsState.key_codes.VK_L_BREAKE.img = "s";
+	objControlsState.key_codes.VK_R_BREAKE		= 221;   //[ {
+	objControlsState.key_codes.VK_R_BREAKE.img = "s";
+	objControlsState.key_codes.VK_A_POINT		= 186;  //; :
+	objControlsState.key_codes.VK_A_POINT.img = "s";
+	objControlsState.key_codes.VK_A_QUOTE		= 222;  //' "
+	objControlsState.key_codes.VK_A_QUOTE.img = "s";
+	objControlsState.key_codes.VK_A_SMALL		= 188;  //, <
+	objControlsState.key_codes.VK_A_SMALL.img = "s";
+	objControlsState.key_codes.VK_A_BIG		= 190;  //. >
+	objControlsState.key_codes.VK_A_BIG.img = "s";
+	objControlsState.key_codes.VK_A_QWS	    = 191;  //?/
+	objControlsState.key_codes.VK_A_QWS.img = "s";
+	objControlsState.key_codes.VK_A_PLUS	    = 187;  //= +
+	objControlsState.key_codes.VK_A_PLUS.img = "s";
+	objControlsState.key_codes.VK_A_MINUS	    = 189;  //- _
+	objControlsState.key_codes.VK_A_MINUS.img = "s";
+	objControlsState.key_codes.VK_A_SLUSH	    = 220;  // \ |
+	objControlsState.key_codes.VK_A_SLUSH.img = "s";
+
+	objControlsState.key_codes.VK_A_TILDA	    = 192;  // ` ~
+	objControlsState.key_codes.VK_A_TILDA.img = ">";
+
+	objControlsState.key_codes.VK_CAPSLOCK	    = 20;
+	objControlsState.key_codes.VK_CAPSLOCK.img = "s";
+
 
 	// Key groups for controls remapping
 	objControlsState.grouplist.Sailing1Pers = true;
