@@ -1787,7 +1787,7 @@ void Ship_PrepareShipForLocation(ref rCharacter)
 
 void Ship_StartLoad()
 {
-	SetTexturePath(0, "Ships\\")
+	SetTexturePath(0, "Ships\\");
 }
 
 void Ship_EndLoad()

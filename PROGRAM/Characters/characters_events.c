@@ -220,7 +220,7 @@ bool chrIsNowEnableReload()
 
 string funcGetWeaponID()
 {
-	return "blade"
+	return "blade";
 }
 
 void chrChangeReloadStateHndl()

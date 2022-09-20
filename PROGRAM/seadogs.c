@@ -50,6 +50,8 @@ native int RDTSC_B();
 native int RDTSC_E(int iRDTSC);
 
 native int SetTexturePath(int iLevel, string sPath);
+native int SetGlowParams(float fBlurBrushSize, int Intensivity, int BlurPasses);
+native int RPrint(int x, int y, string sPrint);
 
 #libriary "script_libriary_test"
 #libriary "dx9render_script_libriary"
