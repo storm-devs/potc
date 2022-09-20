@@ -18,6 +18,9 @@ int		Ships[32];
 
 #define SHIP_DETONATE_SMALL		"ShipDetonateSmall"
 
+#event_handler("Ship_StartLoad", "Ship_StartLoad");
+#event_handler("Ship_EndLoad", "Ship_EndLoad");
+
 void CreateRiggingEnvironment()
 {
 	CreateEntity(&Sail, "Sail");
@@ -30,7 +33,7 @@ void CreateRiggingEnvironment()
 	CreateEntity(&Rope, "Rope");
 	LayerAddObject(sCurrentSeaExecute, &Rope, iShipPriority + 2);
 	LayerAddObject(sCurrentSeaRealize, &Rope, iShipPriority + 2);
-	
+
 	CreateEntity(&Flag, "Flag");
 	LayerAddObject(sCurrentSeaExecute, &Flag, iShipPriority + 3);
 	LayerAddObject(sCurrentSeaRealize, &Flag, iShipPriority + 3);
@@ -110,7 +113,7 @@ void CreateShipEnvironment()
 	SetEventHandler(SHIP_MAST_DAMAGE, "Ship_MastDamage", 0);
 
 	SetEventHandler("eSwitchPerks", "Ship_UpdatePerks", 0);
-}	
+}
 
 float Ship_GetBortFireDelta()
 {
@@ -143,7 +146,7 @@ void Ship_FireAction()
 	if (IsCompanion(rCharacter))
 	{
 		ChangeCharacterReputation(GetMainCharacter(), -1);
-		
+
 		if (CheckAttribute(rCharacter, "CompanionEnemyEnable") && sti(rCharacter.CompanionEnemyEnable))
 		{
 			SeaAI_SetCompanionEnemy(rCharacter);
@@ -158,11 +161,11 @@ void Ship_FireAction()
 		if (bIslandLoaded) { SetNationRelation2MainCharacter(sti(rMainGroupCharacter.nation), RELATION_ENEMY); }
 		SetCharacterRelationBoth(GetMainCharacterIndex(), sti(rMainGroupCharacter.index), RELATION_ENEMY);
 	}
-	
+
 	UpdateRelations();
 
 	RefreshBattleInterface();
-	
+
 	// if fort - return
 	if (sti(rCharacter.Ship.Type) == SHIP_FORT) { return; }
 
@@ -290,7 +293,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 {
 	ref		rCharacter = GetCharacter(iCharacterIndex);
 	aref	arCharacter; makearef(arCharacter, Characters[sti(rCharacter.index)]);
-	
+
 	int iShipType = sti(rCharacter.Ship.Type);
 	if (iShipType >= SHIP_TYPES_QUANTITY_WITH_FORT)
 	{
@@ -302,7 +305,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 	{
 		SetBaseShipData(rCharacter);
 		Ship_SetFantomData(rCharacter);
-		
+
 		Fantom_SetBalls(rCharacter, sFantomType);
 		Fantom_SetGoods(rCharacter, sFantomType);
 	}
@@ -326,7 +329,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 	Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters
 	CreateEntity(&Characters[iCharacterIndex], "Ship");
 	SendMessage(&AISea, "liaa", AI_MESSAGE_ADD_SHIP, &Characters[iCharacterIndex], &Characters[iCharacterIndex], &ShipsTypes[iShipType]);
-	
+
 	ReloadProgressUpdate();
 
 	Ships[iNumShips] = iCharacterIndex;
@@ -336,7 +339,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 void Ship_ChangeChargeEvent()
 {
 	string	sBallName;
-	
+
 	ref rCharacter = GetCharacter(GetEventData());
 
 	SendMessage(&AISea, "la", AI_MESSAGE_CANNON_RELOAD, rCharacter);
@@ -360,7 +363,7 @@ void Ship_OnCreate()
 {
 	ref rCharacter = GetCharacter(GetEventData());
 	//Trace("Ship_OnCreate rCharacter = " + rCharacter.id);
-	
+
 	rCharacter.Ship.Speed.z = 0.0;
 	rCharacter.Ship.Speed.y = 0.0;
 	rCharacter.Ship.Speed.x = 0.0;
@@ -370,18 +373,18 @@ void Ship_CheckSituation()
 {
 	ref		rShip;
 	aref	rSituation;
-	
+
 	aref	rCharacter = GetEventData();
 	aref	rShipObject = GetEventData();
 
 	if (sti(rCharacter.index) == GetMainCharacterIndex()) { return; }
-	
+
 	rShip = GetShipByType(sti(rCharacter.Ship.Type));
 	makearef(rSituation, rCharacter.SeaAI.Update.Situation);
 
 	float	fMinEnemyDistance = stf(rSituation.MinEnemyDistance);
-	
-	// check for enought quantity of balls 
+
+	// check for enought quantity of balls
 	int iShipCannonsNum = sti(rShip.CannonsQuantity);
 	int iCurrentBallType = sti(rCharacter.Ship.Cannons.Charge.Type);
 	bool bBalls, bKnippels, bBombs, bGrapes;
@@ -428,7 +431,7 @@ void Ship_CheckSituation()
 		return;
 	}
 
-	if (iNewBallType >= 0 && iNewBallType != iCurrentBallType) 
+	if (iNewBallType >= 0 && iNewBallType != iCurrentBallType)
 	{
 		Ship_ChangeCharge(rCharacter, iNewBallType);
 	}
@@ -442,7 +445,7 @@ void Ship_CheckSituation()
 				ref rCharacter2Brander = GetCharacter(sti(rCharacter.SeaAI.Task.Target));
 				ref rBaseShip = GetShipByType(sti(rCharacter2Brander.Ship.Type));
 				float fBranderDistance = 30.0 + (7.0 - stf(rBaseShip.Class)) * 40.0;
-				float fDistance = Ship_GetDistance2D(rCharacter, rCharacter2Brander); 
+				float fDistance = Ship_GetDistance2D(rCharacter, rCharacter2Brander);
 				if (fBranderDistance > fDistance)
 				{
 					// fire ship
@@ -489,7 +492,7 @@ void Ship_BranderDetonate()
 
 	if (!FindEntity(&arShipObjects[0], "ship")) { return; }// can't be
 	while (FindEntityNext(&arShipObjects[iNumShips])) { iNumShips++; }
-	
+
 	// enumerate ship and do damage
 	for (int i=0; i<iNumShips; i++)
 	{
@@ -593,7 +596,7 @@ void Ship_Ship2ShipCollision()
 {
 	int		iOurCharacterIndex, iEnemyCharacterIndex, iTouchPoint;
 	float	fPower, fSlide, x, y, z;
-	
+
 	iOurCharacterIndex = GetEventData();
 	iEnemyCharacterIndex = GetEventData();
 	fPower = abs(GetEventData());
@@ -602,7 +605,7 @@ void Ship_Ship2ShipCollision()
 	x = GetEventData();
 	y = GetEventData();
 	z = GetEventData();
-	
+
 	ref rOurCharacter = GetCharacter(iOurCharacterIndex);
 
 	float fHP = (1.0 - fSlide) * fPower * 20.0;
@@ -645,11 +648,11 @@ void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int 
 		if (sti(Characters[iKillerCharacterIndex].TmpPerks.HullDamageUp)) fPlus = 0.15;
 		if (sti(Characters[iKillerCharacterIndex].TmpPerks.CannonProfessional)) fPlus = 0.3;
 	}
-	
+
 	if (sti(rOurCharacter.TmpPerks.BasicBattleState))			fMinus = 0.15;
 	if (sti(rOurCharacter.TmpPerks.AdvancedBattleState))		fMinus = 0.25;
 	if (sti(rOurCharacter.TmpPerks.ShipDefenseProfessional))	fMinus = 0.40;
-	
+
 	if (LAi_IsDead(rOurCharacter)) { return; }
 	fCurHP = stf(rOurCharacter.Ship.HP) - fHP * (1.0 + fPlus - fMinus);
 	//Trace("idx = " + rOurCharacter.index + ", fCurHP = " + fCurHP);
@@ -666,7 +669,7 @@ void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int 
 void Ship_AddCharacterExp(ref rCharacter, int iExpQuantity)
 {
 	AddCharacterExp(rCharacter, iExpQuantity);
-	
+
 	if (sti(rCharacter.index) == GetMainCharacterIndex())
 	{
 		fSeaExp = fSeaExp + iExpQuantity;
@@ -676,7 +679,7 @@ void Ship_AddCharacterExp(ref rCharacter, int iExpQuantity)
 void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterIndex)
 {
 	ref rDead, rKillerCharacter, rMainCharacter, rBaseShip, rKillerBaseShip;
-	
+
 	rDead = GetCharacter(iDeadCharacterIndex);
 	rBaseShip = GetShipByType(sti(rDead.Ship.Type));
 
@@ -688,7 +691,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 
 	rMainCharacter = GetMainCharacter();
 	int iQuantity = GetCompanionQuantity(rMainCharacter);
-	
+
 	float fX = stf(rDead.Ship.Pos.x);
 	float fY = stf(rDead.Ship.Pos.y);
 	float fZ = stf(rDead.Ship.Pos.z);
@@ -696,7 +699,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 	rDead.Ship.HP = 0;
 	rDead.Killer.Status = iKillStatus;
 	rDead.Killer.Index = iKillerCharacterIndex;
-	
+
 	LAi_SetCurHP(rDead, 0.0);
 	//LAi_KillCharacter(rDead);
 
@@ -753,11 +756,11 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		int iRelation = SeaAI_GetRelation(iDeadCharacterIndex, iKillerCharacterIndex);
 		switch (iRelation)
 		{
-			case RELATION_FRIEND: 
+			case RELATION_FRIEND:
 			break;
-			case RELATION_NEUTRAL: 
+			case RELATION_NEUTRAL:
 			break;
-			case RELATION_ENEMY: 
+			case RELATION_ENEMY:
 				if (bCompanion)
 				{
 					for (int i=0; i<COMPANION_MAX; i++)
@@ -777,8 +780,8 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		}
 	}
 
-	if (rand(10) >= 6 && sti(rBaseShip.Class) <= 6) 
-	{ 
+	if (rand(10) >= 6 && sti(rBaseShip.Class) <= 6)
+	{
 		bool bDetonate = false;
 		switch (iKillStatus)
 		{
@@ -795,12 +798,12 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 	aSink.Speed.x = 0.017 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around x
 	aSink.Speed.z = 0.017 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around z
 
-	if (iDeadCharacterIndex == GetMainCharacterIndex()) 
-	{ 
+	if (iDeadCharacterIndex == GetMainCharacterIndex())
+	{
 		SeaCameras_SetDieCamera();
 		FadeOutMusic(2000);
 		PlayStereoOGG("music_ship_dead");
-		PostEvent(GAME_OVER_EVENT, 15000); 
+		PostEvent(GAME_OVER_EVENT, 15000);
 	}
 
 	Play3DSound("ship_sink", fX, fY, fZ);
@@ -827,7 +830,7 @@ void Ship_HullHitEvent()
 	int		iBallCharacterIndex = GetEventData();
 	int		iOurCharacterIndex = GetEventData();
 
-	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);	
+	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);
 	ref		rOurCharacter = GetCharacter(iOurCharacterIndex);
 
 	rOurCharacter.Ship.LastBallCharacter = iBallCharacterIndex;
@@ -838,7 +841,7 @@ void Ship_HullHitEvent()
 	float	y = GetEventData();
 	float	z = GetEventData();
 
-	int		iFirePlaceIndex = GetEventData();   
+	int		iFirePlaceIndex = GetEventData();
 	float	fFirePlaceDistance = GetEventData();
 
 	bool	bDead = LAi_IsDead(rOurCharacter);
@@ -887,7 +890,7 @@ void Ship_HullHitEvent()
 		float fCrewDamage = stf(rBall.DamageCrew) * fCannonDamageMultiply * AIShip_isPerksUse(rBallCharacter.TmpPerks.CrewDamageUp, 1.0, 1.15);
 
 		if (bSeriousBoom)
-		{ 
+		{
 			fCrewDamage = fCrewDamage * 2.0;
 			fHP = fCannonDamageMultiply * stf(rBall.DamageHull) * (4.0 + frnd() * 2.0);
 			Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_BALL, iBallCharacterIndex);
@@ -900,9 +903,9 @@ void Ship_HullHitEvent()
 			}
 		}
 		else
-		{ 
+		{
 			fHP = fCannonDamageMultiply * stf(rBall.DamageHull);
-			Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_BALL, iBallCharacterIndex); 
+			Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_BALL, iBallCharacterIndex);
 			if (iCompanion == - 1) { Ship_AddCharacterExp(rBallCharacter, 20); }
 		}
 
@@ -912,18 +915,18 @@ void Ship_HullHitEvent()
 	if (bInflame == true && fFirePlaceDistance < 4.0 && iFirePlaceIndex >= 0)
 	{
 		int iRandStartTime = rand(1000);
-		float fTotalFireTime = Ship_GetTotalFireTime(rOurCharacter); 
+		float fTotalFireTime = Ship_GetTotalFireTime(rOurCharacter);
 
 		PostEvent(SHIP_ACTIVATE_FIRE_PLACE, iRandStartTime, "ialsf", rShipObject, rOurCharacter, iFirePlaceIndex, "ship_onfire", fTotalFireTime);
 		PostEvent(SHIP_FIRE_DAMAGE, iRandStartTime, "lllf", iOurCharacterIndex, iBallCharacterIndex, iFirePlaceIndex, fTotalFireTime);
 	}
 
-	if (bSeriousBoom == true) { Ship_Serious_Boom(x, y, z); }	
+	if (bSeriousBoom == true) { Ship_Serious_Boom(x, y, z); }
 }
 
 float Ship_GetTotalFireTime(ref rCharacter)
 {
-	int iRepairSkill = MakeInt(stf(rCharacter.TmpSkill.Repair) * 10.0); 
+	int iRepairSkill = MakeInt(stf(rCharacter.TmpSkill.Repair) * 10.0);
 	return MakeFloat(5 + 3 * (10 - iRepairSkill));
 }
 
@@ -937,7 +940,7 @@ void Ship_FireDamage()
 
 	ref rOurCharacter = GetCharacter(iOurCharacterIndex);
 	ref rBallCharacter = GetCharacter(iBallCharacterIndex);
-	
+
 	int iSClass = GetCharacterShipClass(rOurCharacter);
 
 	float fHP = (8 - iSClass) * (0.5 + frnd() * 0.5);
@@ -945,9 +948,9 @@ void Ship_FireDamage()
 	int iTime = 1000 + rand(500);
 
 	// if abordage or interface launched
-	if (!bAbordageStarted && !sti(InterfaceStates.Launched)) 
-	{ 
-		Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_BALL, iBallCharacterIndex); 
+	if (!bAbordageStarted && !sti(InterfaceStates.Launched))
+	{
+		Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_BALL, iBallCharacterIndex);
 
 		fTotalFireTime = fTotalFireTime - MakeFloat(iTime) / 1000.0;
 	}
@@ -990,7 +993,7 @@ void Ship_SetFantomData(ref rFantom)
 void CharacterUpdateShipFromBaseShip(int iCharacterIndex)
 {
 	ref rCharacter, rCannon, rBaseShip;
-	
+
 	rCharacter = GetCharacter(iCharacterIndex);
 	rBaseShip = GetShipByType(sti(rCharacter.Ship.Type));
 
@@ -1002,7 +1005,7 @@ void CharacterUpdateShipFromBaseShip(int iCharacterIndex)
 	if (!CheckAttribute(rCharacter,"Ship.SP")) { rCharacter.Ship.SP = rBaseShip.SP; }
 
 	if (!CheckAttribute(rCharacter,"Ship.Cannons.Charge.Type")) { rCharacter.Ship.Cannons.Charge.Type = GOOD_BOMBS; }
-	
+
 	//Trace("Init cindex = " + iCharacterIndex + ", ship HP = " + rCharacter.Ship.HP + ", id = " + rCharacter.id + ", idx = " + rCharacter.index);
 	if (!CheckAttribute(rCharacter,"Ship.Cannons.Type")) { rCharacter.Ship.Cannons.Type = CANNON_TYPE_CULVERINE_LBS12; };
 
@@ -1059,8 +1062,8 @@ void Ship_CheckMainCharacter()
 	bool bGrapplingProfessional = sti(rCharacter.TmpPerks.GrapplingProfessional);
 
 	// max abordage parameters for our player
-		float fGrapplingPerk = AIShip_isPerksUse(rCharacter.TmpPerks.LongRangeGrappling, 1.0, 1.15); 
-		fGrapplingPerk = AIShip_isPerksUse(rCharacter.TmpPerks.GrapplingProfessional, fGrapplingPerk, 1.25); 
+		float fGrapplingPerk = AIShip_isPerksUse(rCharacter.TmpPerks.LongRangeGrappling, 1.0, 1.15);
+		fGrapplingPerk = AIShip_isPerksUse(rCharacter.TmpPerks.GrapplingProfessional, fGrapplingPerk, 1.25);
 
 		float fOurMaxAbordageDistance = fGrapplingPerk * Bring2Range(15.0, 40.0, 0.0, 1.0, fOurGrappling);
 		float fOurMaxAbordageAngle = Bring2Range(0.70, 0.45, 0.0, 1.0, fOurGrappling);
@@ -1088,7 +1091,7 @@ void Ship_CheckMainCharacter()
 			aref aFort = GetAttributeN(aForts, i);
 			iRelation = sti(aFort.relation);
 			if (iRelation == RELATION_FRIEND) { continue; }
-			ref rFortCharacter = GetCharacter(sti(aFort.idx)); 
+			ref rFortCharacter = GetCharacter(sti(aFort.idx));
 			if (LAi_IsDead(rFortCharacter)) { continue; }
 			aref aRLoc = FindIslandReloadLocator(sPlayerLocation, rFortCharacter.location.locator);
 			float fRadius = stf(aRLoc.Radius);
@@ -1123,7 +1126,7 @@ void Ship_CheckMainCharacter()
 					}
 					if (fDistance > fRadius) { continue; }
 					if (!Character_IsAbordageEnable(rFortCharacter)) { continue; }
-					
+
 					if (fBestDistance > fDistance)
 					{
 						fBestDistance = fDistance;
@@ -1143,10 +1146,10 @@ void Ship_CheckMainCharacter()
 		{
 			aref aShip = GetAttributeN(aShips, i);
 
-			ref rShipCharacter = GetCharacter(sti(aShip.idx)); 
+			ref rShipCharacter = GetCharacter(sti(aShip.idx));
 			fDistance = stf(aShip.Distance);		// distance between player ship and this ship
 			iRelation = sti(aShip.relation);
-			
+
 			if (LAi_IsDead(rShipCharacter)) { continue; }
 			if (iRelation != RELATION_ENEMY) { continue; }
 			if (fMinEnemyDistance > fDistance) { fMinEnemyDistance = fDistance; }
@@ -1169,9 +1172,9 @@ void Ship_CheckMainCharacter()
 					fBestDistance = fDistance;
 					bAbordageShipCanBe = true;
 					iAbordageShipEnemyCharacter = sti(rShipCharacter.index);
-					
+
 					// maybe other character want abordage us?
-					float fEnemyFencing = stf(rCharacter.TmpSkill.Fencing); 
+					float fEnemyFencing = stf(rCharacter.TmpSkill.Fencing);
 					float fEnemyCrewFencing = (0.1 + fEnemyFencing * stf(rShipCharacter.Ship.Crew.Quantity));
 					float fRatio = fEnemyCrewFencing / fOurCrewFencing;
 					if (sti(rShipCharacter.nation) == PIRATE) { fRatio = fRatio * 1.4; }
@@ -1255,10 +1258,10 @@ void Ship_CheckMainCharacter()
 				case SHIP_SAIL:
 					if (!Whr_IsStorm()) { Sound_OnSeaAlarm(false); }
 					if (iPrevShipPOSMode == SHIP_WAR) { PlayStereoOGG("music_ship_victory"); }
-					if (iPrevShipPOSMode == SHIP_STORM) 
-					{ 
+					if (iPrevShipPOSMode == SHIP_STORM)
+					{
 						FadeOutMusic(3000);
-						PlayStereoOGG("music_End_storm"); 
+						PlayStereoOGG("music_End_storm");
 					}
 				break;
 				case SHIP_WAR:
@@ -1280,18 +1283,18 @@ void Ship_OnStrandNext()
 	if (LAi_IsDead(rCharacter)) { return; }
 
 	bool bOnStrand = sti(rCharacter.Ship.Strand);
-	if (!bOnStrand) 
-	{ 
+	if (!bOnStrand)
+	{
 		int iSoundID = sti(rCharacter.Ship.Strand.SndID);
 		if (iSoundID != 0) { StopSound(sti(rCharacter.Ship.Strand.SndID), 3000); }
 		rCharacter.Ship.Strand.SndID = SOUND_INVALID_ID;
-		return; 
+		return;
 	}
 
 	if (!sti(rCharacter.TmpPerks.SandbankManeuver))
 	{
 		float fCurrentSpeedZ = stf(rCharacter.Ship.Speed.z);
-		
+
 		float fHP = 4.0 * fCurrentSpeedZ / 7.0;
 		Ship_ApplyHullHitpoints(rCharacter, fHP, KILL_BY_ISLAND, -1);
 	}
@@ -1302,7 +1305,7 @@ void Ship_OnStrand()
 {
 	ref rCharacter = GetCharacter(GetEventData());
 	bool bNewStrand = GetEventData();
-	
+
 	bool bPrevStrand = sti(rCharacter.Ship.Strand);
 
 	rCharacter.Ship.Strand = bNewStrand;
@@ -1367,7 +1370,7 @@ void Ship_Turn180(ref rCharacter)
 // Big Boom on ship
 void Ship_Detonate(ref rCharacter, bool bMakeSmallBoom, bool bMakeDead)
 {
-	if (!CheckAttribute(rCharacter, "Ship.Pos.x")) 
+	if (!CheckAttribute(rCharacter, "Ship.Pos.x"))
 	{
 		Trace("Ship_Detonate: Can't find Ship.Pos in character with id: " + rCharacter.id);
 		return;
@@ -1394,7 +1397,7 @@ void Ship_Detonate(ref rCharacter, bool bMakeSmallBoom, bool bMakeDead)
 		z1 = (frnd() - 0.5) * bz;
 
 		RotateAroundY(&x1, &z1, fCos, fSin);
-		
+
 		y1 = 1.0 + y + frnd() * 3.0;
 		Ship_Serious_Boom(x1 + x, y1, z1 + z);
 		CreateParticleSystem("blast", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
@@ -1444,12 +1447,12 @@ void Ship_UpdateParameters()
 		arCharShip.Crew.MinRatio = Bring2Range(0.0, 1.0, fCrewMin25Percent, fCrewMin, fCrewCur);
 
 	// wind power
-		float	fWindPower = Whr_GetWindSpeed() / WIND_NORMAL_POWER;	
+		float	fWindPower = Whr_GetWindSpeed() / WIND_NORMAL_POWER;
 		float	fWindDotShip = GetDotProduct(Whr_GetWindAngle(), stf(arCharShip.Ang.y));		// Wind.ay | Ship.ay
 
 	// calculate MaxSpeedZ
-		float fSpeedPerk = AIShip_isPerksUse(arTmpPerks.ShipSpeedUp, 1.0, 1.15); 
-		fSpeedPerk = AIShip_isPerksUse(arTmpPerks.SailingProfessional, fSpeedPerk, 1.20); 
+		float fSpeedPerk = AIShip_isPerksUse(arTmpPerks.ShipSpeedUp, 1.0, 1.15);
+		fSpeedPerk = AIShip_isPerksUse(arTmpPerks.SailingProfessional, fSpeedPerk, 1.20);
 
 		float	fK = Clampf(1.0 - stf(rShip.SpeedDependWeight) * fLoad);
 		arCharShip.MaxSpeedZ = (fMaxSpeedZ * fWindPower * fK) * fSpeedPerk;
@@ -1476,8 +1479,8 @@ void Ship_UpdateParameters()
 
 		float	fTRResult = Bring2Range(0.2, 0.85, 0.00001, 1.0, fTRFromWeight * fTRFromSpeed * fTRFromSkill * fTRFromPeople * fTRFromSailDamage * fTRFromSailState);
 
-		float fTurnPerk = AIShip_isPerksUse(arTmpPerks.ShipTurnRateUp, 1.0, 1.15); 
-		fTurnPerk = AIShip_isPerksUse(arTmpPerks.SailingProfessional, fTurnPerk, 1.20); 
+		float fTurnPerk = AIShip_isPerksUse(arTmpPerks.ShipTurnRateUp, 1.0, 1.15);
+		fTurnPerk = AIShip_isPerksUse(arTmpPerks.SailingProfessional, fTurnPerk, 1.20);
 
 		// fast turn 180
 		if (sti(arTmpPerks.Turn) == -1)
@@ -1485,7 +1488,7 @@ void Ship_UpdateParameters()
 			CharacterPerkOff(rCharacter, "Turn180");
 			arTmpPerks.Turn = false;
 		}
-		float fFastTurn180 = AIShip_isPerksUse(arTmpPerks.Turn, 1.0, 8.0); 
+		float fFastTurn180 = AIShip_isPerksUse(arTmpPerks.Turn, 1.0, 8.0);
 
 		arCharShip.MaxSpeedY =	fTRResult * fMaxSpeedY * fTurnPerk * fFastTurn180;
 
@@ -1498,11 +1501,11 @@ void Ship_UpdateParameters()
 		float fCurHP = stf(arCharShip.HP);
 		if (bSeaActive && (fCurHP / fBaseShipHP < 0.1))
 		{
-			float fLightRepair = AIShip_isPerksUse(arTmpPerks.LightRepair, 1.0, 0.0); 
+			float fLightRepair = AIShip_isPerksUse(arTmpPerks.LightRepair, 1.0, 0.0);
 			if (CheckAttribute(rCharacter, "SinkTenPercent") && !sti(rCharacter.SinkTenPercent)) { fLightRepair = 0.0; }
 			float fSinkDamage = fLightRepair * (fBaseShipHP / 100.0) * 0.08;
-			if (CheckAttribute(rCharacter, "Ship.LastBallCharacter")) 
-			{ 
+			if (CheckAttribute(rCharacter, "Ship.LastBallCharacter"))
+			{
 				Ship_ApplyHullHitpoints(rCharacter, fSinkDamage, KILL_BY_BALL, sti(rCharacter.Ship.LastBallCharacter));
 			}
 			else
@@ -1516,13 +1519,13 @@ void Ship_UpdateParameters()
 			if (iCharacterIndex == GetMainCharacterIndex()) { DelPerkFromActiveList("sink"); }
 		}
 
-		float fStormProfessional = AIShip_isPerksUse(arTmpPerks.StormProfessional, 1.0, 0.6); 
+		float fStormProfessional = AIShip_isPerksUse(arTmpPerks.StormProfessional, 1.0, 0.6);
 
 	// do damage if storm or tornado
 		if (bStorm && bSeaActive)
 		{
 			float fWindAttack = 1.0 - abs(fWindDotShip);
-			
+
 			float fDamageMultiply = fStormProfessional * Bring2Range(0.25, 1.0, 0.0, 1.0, fWindAttack);
 
 			// hull damage
@@ -1565,7 +1568,7 @@ void Ship_UpdateParameters()
 				case 2: MakeSailDmg(iCharacterIndex, fTornadoDamageMultiply * (fBaseSailHP / 100.0) * 8.5); break;
 			}
 		}
-	
+
 	// Expirience log section
 		if (iCharacterIndex == GetMainCharacterIndex() && bSeaActive)
 		{
@@ -1610,7 +1613,7 @@ void Ship_PrintExp(int iExp)
 void Ship_TornadoDamage()
 {
 	float fTime = GetEventData();
-	
+
 	Tornado.x = GetEventData();
 	Tornado.z = GetEventData();
 }
@@ -1667,9 +1670,9 @@ void Ship_UpdatePerks()
 	aTmpPerks.CriticalShoot				= CheckOfficersPerk(rCharacter, "CriticalShoot");
 	aTmpPerks.LongRangeShoot			= CheckOfficersPerk(rCharacter, "LongRangeShoot");
 	aTmpPerks.CannonProfessional		= CheckOfficersPerk(rCharacter, "CannonProfessional");
-	aTmpPerks.LongRangeGrappling		= CheckOfficersPerk(rCharacter, "LongRangeGrappling");		
+	aTmpPerks.LongRangeGrappling		= CheckOfficersPerk(rCharacter, "LongRangeGrappling");
 	//aTmpPerks.MusketsShoot				= CheckOfficersPerk(rCharacter, "MusketsShoot");				// !!!!
-	aTmpPerks.GrapplingProfessional		= CheckOfficersPerk(rCharacter, "GrapplingProfessional");	
+	aTmpPerks.GrapplingProfessional		= CheckOfficersPerk(rCharacter, "GrapplingProfessional");
 	aTmpPerks.BasicBattleState			= CheckOfficersPerk(rCharacter, "BasicBattleState");
 	aTmpPerks.AdvancedBattleState		= CheckOfficersPerk(rCharacter, "AdvancedBattleState");
 	aTmpPerks.ShipDefenseProfessional	= CheckOfficersPerk(rCharacter, "ShipDefenseProfessional");
@@ -1727,7 +1730,7 @@ void Ship_Lightning()
 
 			int iNumFirePlaces = 0;
 			SendMessage(rCharacter, "le", MSG_SHIP_GET_NUM_FIRE_PLACES, &iNumFirePlaces);
-			
+
 			float fFirePlaces = Bring2Range(1.0, 0.1, 0.0, fMinLightningDist, fDist);
 
 			float fCurr = 0.0;
@@ -1736,7 +1739,7 @@ void Ship_Lightning()
 			{
 				fCurr = fCurr + 1.0;
 				if (fCurr < fTest) { continue; }
-	
+
 				fCurr = 0.0;
 				int iRandStartTime = rand(10000);
 				float fTotalFireTime = Ship_GetTotalFireTime(rCharacter);
@@ -1780,4 +1783,14 @@ void Ship_ClearImpulseStrength(ref rCharacter)
 void Ship_PrepareShipForLocation(ref rCharacter)
 {
 	Ship_ClearImpulseStrength(rCharacter);
+}
+
+void Ship_StartLoad()
+{
+	SetTexturePath(0, "Ships\\")
+}
+
+void Ship_EndLoad()
+{
+	SetTexturePath(0, "");
 }
