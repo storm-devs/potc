@@ -12,5 +12,12 @@
 *.qch
 *.sfk
 
+# Log files
+*.log
+
 # Save games
 /SAVE
+
+# Non-source folders
+/MODULES
+/stash
